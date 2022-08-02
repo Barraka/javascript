@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>This text</h1>
+    <canvas id="canvas"></canvas>
+    <br>
+    <button class="thisButton" id="thatButton">Start la machina</button>
+    <p id="change">the machine is stopped</p>
+    <div><input id="inputBox"></div>
+
+    <script>
+        //console.log(location)
+        //alert(varName);
+        //typeof(myVal);
+        //let myVar=32;
+        //let a = prompt("First number: " , 1);
+        //alert(`hi, ${name}`);
+        //const button=document.querySelector("button");
+
+        //----2 methods of getting input information :
+        //const button=document.getElementsByClassName("thisButton");
+        //button[0].addEventListener("click",greet);
+        //or, better:
+        //const button=document.getElementById("thatButton");
+        //button.addEventListener("click",greet);
+        let longString = `This is gonna be real long...
+        I might as well span it over a few lines...
+        Oh well, I'm done`;
+
+        let val1=document.getElementById("change");
+
+        
+
+        //const button=document.querySelector("button");
+        //const button=document.getElementsByClassName("thisButton");
+        const button=document.getElementById("thatButton");
+        function greet() {
+            let var1=document.getElementById("inputBox").value;
+            alert(`hi, ${var1}`);
+        }
+        
+        button.addEventListener("click",greet);
+
+
+    </script>
+</body>
+</html>
