@@ -13,7 +13,29 @@
     <br>
     <button class="thisButton" id="thatButton">Start la machina</button>
     <p id="change">the machine is stopped</p>
-    <div><input id="inputBox"></div>
+    <div><input id="inputBox" name="otherInput"></div>
+
+    <label for="weather">Select the weather type today: </label>
+        <select id="weather">
+        <option value="">--Make a choice--</option>
+        <option value="sunny">Sunny</option>
+        <option value="rainy">Rainy</option>
+        <option value="snowing">Snowing</option>
+        <option value="overcast">Overcast</option>
+    </select>
+    <p>here</p>
+    <p id="answer">there</p>
+    <label>Select theme:</label>
+    <select id="theme">
+        <option value="green">green</option>
+        <option value="black">black</option>
+        <option value="purple">purple</option>
+        <option value="yellow">yellow</option>
+        <option value="psychadelic">psychadelic</option>
+    </select>
+    <br>
+    <input name="thisInput">
+    <input name="thatInput">
 
     <script>
         //console.log(location)
@@ -21,10 +43,10 @@
         //typeof(myVal);
         //let myVar=32;
         //let a = prompt("First number: " , 1);
-        //alert(`hi, ${name}`);
-        //const button=document.querySelector("button");
+        //alert(`hi, ${name}`);        
 
-        //----2 methods of getting input information :
+        //----3 methods of getting input information :
+        //const button=document.querySelector("button");
         //const button=document.getElementsByClassName("thisButton");
         //button[0].addEventListener("click",greet);
         //or, better:
@@ -33,20 +55,129 @@
         let longString = `This is gonna be real long...
         I might as well span it over a few lines...
         Oh well, I'm done`;
+        //----3 methods for extracting a string:
+        //slice(start, end);
+        //substring(start, end);
+        //substr(start, len);
 
-        let val1=document.getElementById("change");
+        //"01"==1 => true
+        //"01"===1 => false
+        //primitive data types have no methods or properties (null, undefined, string...)
+        /* Conditions:
+        if(a>0) {
+            run codeFunction
+        } else if (a<0)
+            {
+                run some other code
+            }
+            else {
+                run some last code
+            }
+        */
+        /*switch(myValue) {
+            case (myValue>10):
+                run this code;
+                break;
+            case (myValue<0):
+                run this other code;
+                break;
+            default:
+                run this last code;
+        }*/
 
-        
+        /*let myvar=Number(prompt("number: "));
+        switch(myvar) {
+            case ((myvar>0 && myvar <10) ? myvar : -123):
+                console.log("small positive");
+                break;
+            case ((myvar <0) ? myvar : 12):
+                console.log("negative");
+                break;
+            default:
+                console.log("big number");
+        }*/
 
-        //const button=document.querySelector("button");
-        //const button=document.getElementsByClassName("thisButton");
+        /*
+        var i = 3
+        switch (i) {
+            case ((i>=0 && i<=5) ? i : -1):
+                console.log('0-5');
+                break;
+            case 6: console.log('other');
+        }*/
+
+        //----Name appears when clicking on button
+        /*let val1=document.getElementById("change");
         const button=document.getElementById("thatButton");
         function greet() {
             let var1=document.getElementById("inputBox").value;
             alert(`hi, ${var1}`);
-        }
+        }        
+        button.addEventListener("click",greet);*/
+
+        //----The select choice appears in a paragraph tag
+        /*let select=document.getElementById("weather");
+        let para=document.getElementById("answer");
+        select.addEventListener('change',setWeather);
         
-        button.addEventListener("click",greet);
+        function setWeather() {
+            let choice=select.value;
+            //para.textContent=para.innerHTML+choice;
+            para.innerText+=choice;
+        }*/
+
+        //----Set background to black
+        select=document.getElementById("theme");
+        let html=document.querySelector("html");
+        //document.body.style.padding="10px";
+        function update(bgColor,txtColor) {
+            console.log(bgColor);
+            html.style.backgroundColor=bgColor;
+            html.style.color=txtColor;
+        }
+        //using the "conditional operator" ? ==> let myvar = (cond1>15) ? doThisIfYes : doThisIfNo;
+        //select.addEventListener("change", () => select.value === 'black' ? update ("black", "white") : update ("white" , "black"));
+        select.addEventListener("change", ()=> update(select.value, "orange"));
+
+        //----Switch & conditional operator:
+        /*let myvar=Number(prompt("Type in your number: "));
+        let res;
+        switch(myvar) {
+            case((myvar>0) ? myvar : -1):
+                res=1;
+                break;
+            case((myvar<0) ? myvar : 1):
+                res=-1
+                break;
+            default:
+                res=0;
+        }
+        console.log(res);*/
+
+        //----Multiline condition operator:
+        /*let message = (login == 'Employee') ? 'Hello' :
+            (login == 'Director') ? 'Greetings' :
+            (login == '') ? 'No login' :
+            '';*/
+
+        //----Arrow function
+        let myInputs=document.querySelectorAll("input");
+        let tempVal;
+        myInputs.forEach((x) => {
+            x.addEventListener('keyup',(e) => {
+                showResult(e.target.value);
+                console.log(e.target.attributes.name.value);
+                /*tempVal=e.target.attributes.name.value;
+                select=document.getElementsByName(tempVal);
+                console.log(tempVal);*/
+            });
+        });
+        /*myInputs.forEach((input) => {
+            input.addEventListener('keyup',showResult(input));
+        })*/
+        function showResult(x) {
+            console.log(x);
+        }
 
 
     </script>
