@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BG Sliders</title>
+    <link rel="stylesheet" href="backgroundSliders.css">
+</head>
+<body>
+
+    <input id="myinputbox">
+    <br>
+    <div>Red:<input type="range" id="rangeRed"></div>
+    <div>Green:<input type="range" id="rangeGreen"></div>
+    <div>Blue:<input type="range" id="rangeBlue"></div>
+    <div>Alpha:<input type="range" id="rangeAlpha"></div>
+
+    
+
+    <script>
+        let qred,qgreen,qblue,qalpha;
+        let valred=document.getElementById("rangeRed");
+        valred.addEventListener("change",(e) => {
+            qred=e.target.value;
+            changeBackground();
+        })
+        let valgreen=document.getElementById("rangeGreen");
+        valgreen.addEventListener("change",(e) => {
+            qgreen=e.target.value;
+            changeBackground();
+        })
+        let valblue=document.getElementById("rangeBlue");
+        valblue.addEventListener("change",(e) => {
+            qblue=e.target.value;
+            changeBackground();
+        })
+        let valalpha=document.getElementById("rangeAlpha");
+        valalpha.addEventListener("change",(e) => {
+            qalpha=e.target.value/100;
+            changeBackground();
+        })
+
+        function changeBackground()
+            {
+            document.body.style.backgroundColor = 'rgba(' + [qred,qgreen,qblue,qalpha].join(',') + ')';
+            }
+        
+    </script>
+</body>
+</html>

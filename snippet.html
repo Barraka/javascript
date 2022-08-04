@@ -4,35 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Snippets</title>
+    <link rel="stylesheet" href="snippet.css">
+    <style>
+        input {
+          font-size: 2em;
+          margin: 10px 1px 0;
+        }
+      </style>
 </head>
 <body>
-    <input id="myinputbox">
+    <input class="numberInput" type="text">
+    <p></p>
+ 
+
+
     
 
     <script>
-        let myval=document.getElementById("myinputbox");
-        myval.addEventListener("keyup",(e) => {
-            console.clear();
-            //console.log(e.target.value);
-            console.log(e.key);
-        })
-        let dim1= [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]];
-        let dim2=[1,5,9,13];
-        
-        function randint() {
-            return Math.floor(Math.random()*4)+1;
+        function say(val1,val2="") {
+            return(val1 + " " +val2);
         }
-        function rand16() {
-            let v1=randint()-1;
-            let v2=randint()-1;
-            console.log("v1: " + v1);
-            console.log("v2: " + v2);
-            console.log(dim1[v1][v2]);
-            console.log(dim2[v1]+v2);
 
 
-        }
     </script>
 </body>
 </html>

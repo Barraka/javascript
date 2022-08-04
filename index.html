@@ -43,6 +43,7 @@
         //typeof(myVal);
         //let myVar=32;
         //let a = prompt("First number: " , 1);
+        //----Using template literal
         //alert(`hi, ${name}`);        
 
         //----3 methods of getting input information :
@@ -159,26 +160,49 @@
             (login == 'Director') ? 'Greetings' :
             (login == '') ? 'No login' :
             '';*/
-
-        //----Arrow function
+        
+        //----Arrow function && forEach()
+        /*const patterns={
+            telephone:1234,
+            username:"John"
+        };
         let myInputs=document.querySelectorAll("input");
         let tempVal;
         myInputs.forEach((x) => {
             x.addEventListener('keyup',(e) => {
-                showResult(e.target.value);
-                console.log(e.target.attributes.name.value);
-                /*tempVal=e.target.attributes.name.value;
-                select=document.getElementsByName(tempVal);
-                console.log(tempVal);*/
+                console.log(e.target.value);
             });
-        });
-        /*myInputs.forEach((input) => {
-            input.addEventListener('keyup',showResult(input));
-        })*/
-        function showResult(x) {
-            console.log(x);
-        }
+        });*/
 
+        //----Using map on array
+        /*const originals = [1, 2, 3];
+        const doubled = originals.map((item) => item * 2);
+        console.log(doubled); // [2, 4, 6]*/
+
+        //----Adding element to HTML DOM
+        /*const para = document.createElement('p');
+        document.body.appendChild(para);
+        para.textContent = `Newly added text`;*/
+
+        //----Filter & append from list
+        /*const names = ['Chris', 'Li Kang', 'Anne', 'Francesca', 'Mustafa', 'Tina', 'Bert', 'Jada'];
+        const para = document.createElement('p');
+        names.forEach(x=>x.length<5 ? para.textContent+=x+ " " : -1);
+        document.body.appendChild(para);*/
+
+        //----2 ways to change DOM styles
+        /*const para = document.createElement('div');
+        para.style.backgroundColor='red'; ==> notice we have to put the value in between quotation marks
+        //or, let's say there's a CSS class defined as highlight:
+        para.setAttribute('class','highlight');
+        also, para.setAttribute('id','thisIsMyIdName');*/
+
+        //text = text || 'no text given'; Interesting way to assign a default value if there's no string (or empty), in a function argument
+        // because || returns the first true value
+
+        //Nullish coalescing
+        //let user;
+        //alert(user ?? "Anonymous"); == first value if not null/ undefined, otherwise second value   
 
     </script>
 </body>

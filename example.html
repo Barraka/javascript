@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <!--<input id="input">
+    <button id="button">Press</button>-->
+    <h1>My shopping list</h1>
+
+    <div>
+      <label for="item">Enter a new item:</label>
+      <input type="text" name="item" id="item">
+      <button id="button2">Add item</button>
+    </div>
+
+    <ul>
+
+    </ul>
+    <script>
+        let input=document.querySelector("#item");
+        let button=document.querySelector("button");
+        input.addEventListener('keypress',(e)=>{
+            if(e.key==="Enter") {console.log("send");
+        }});
+
+    </script>
+</body>
+</html>
