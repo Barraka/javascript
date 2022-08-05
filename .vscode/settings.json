@@ -1,3 +1,4 @@
 {
-    "editor.autoSurround": "never"
+    "editor.autoSurround": "never",
+    "editor.wordWrap": "on"
 }
