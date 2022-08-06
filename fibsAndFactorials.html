@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<!-- Things learnt:
+input area outline when focused
+focusing other elements
+using setTimeout to prevent re-focus 
+using a div to better cover selectable area of radio button
+returning items in a list as html text  -->
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,8 +19,10 @@
             justify-content: center;
             align-items: center;
             font-size: 30px;
+            font-family: Arial, Helvetica, sans-serif;
             background-color: rgb(50, 50, 50);
             color:whitesmoke;
+            margin:0px;
         }
         #choice {
             display: flex;
@@ -40,22 +49,42 @@
 
         #return>* {
             font-size: 30px;
-            text-align: center;
+            text-align: center;            
         }
+        #return > button {
+            border-radius: 10px;
+            background-color: rgb(214, 214, 214);
+        }
+        #return {
+            margin-left:150px
+        }
+        #numberInput:focus {
+            outline:none;
+            border:1px solid rgb(57, 192, 255);
+        }   
+
 
       </style>
 </head>
 <body>
     <div id="choice" class="choice" >
-        <div class="hover" id="hovFactorial" onmouseover="this.style.backgroundColor='rgb(100,100,100)'" onmouseout="this.style.backgroundColor='rgb(50,50,50)' " onmousedown="select('factorial')"><input type="radio" value="factorial" name="radio" id="factorial" checked><label for="factorial">Factorials</label></div>
-        <div class="hover" id="hovFibo" onmouseover="this.style.backgroundColor='rgb(100,100,100)'" onmouseout="this.style.backgroundColor='rgb(50,50,50)'"><input type="radio" value="fibos" name="radio" id="fibos"><label for="fibos">Fibonacci</label></div>
-        <div class="hover" id="hovPrimes" onmouseover="this.style.backgroundColor='rgb(100,100,100)'" onmouseout="this.style.backgroundColor='rgb(50,50,50)'"><input type="radio" value="primes" name="radio" id="primes"><label for="primes">Primes</label></div>
+        <div class="hover" id="hovFactorial" onmouseover="this.style.backgroundColor='rgb(100,100,100)'" onmouseout="this.style.backgroundColor='rgb(50,50,50)' " onmouseup="select('factorial')">
+            <input type="radio" value="factorial" name="radio" id="factorial">
+            <label for="factorial">Factorials</label>
+        </div>
+        <div class="hover" id="hovFibo" onmouseover="this.style.backgroundColor='rgb(100,100,100)'" onmouseout="this.style.backgroundColor='rgb(50,50,50)'"onmouseup="select('fibos')">
+            <input type="radio" value="fibos" name="radio" id="fibos" checked>
+            <label for="fibos">Fibonacci</label>
+        </div>
+        <div class="hover" id="hovPrimes" onmouseover="this.style.backgroundColor='rgb(100,100,100)'" onmouseout="this.style.backgroundColor='rgb(50,50,50)'"onmouseup="select('primes')">
+            <input type="radio" value="primes" name="radio" id="primes">
+            <label for="primes">Primes</label>
+        </div>
     </div>
         <div id="return">
             <input class="numberInput" type="text" id="numberInput">
             <button id="button">Calculate</button>
-        </div>
-    
+        </div>    
     
     <div id="result"></div>
 
@@ -70,6 +99,7 @@
         const lab2=document.querySelector("#fibos");
         const lab3=document.querySelector("#primes");
 
+        input.focus();
         button.addEventListener('click', ()=> {
             let num=parseFloat(input.value);
             if(isNaN(num)) {
@@ -85,22 +115,35 @@
                         break;
                     case "primes":
                         para.innerHTML=showPrimes(num);
-                } 
-                //para.innerHTML=showPrimes(num);
+                }
+            }
+            
+            
+        });
+
+        input.addEventListener("keydown", e => {
+            let num=parseFloat(input.value);
+            let temp=document.querySelector('input[name="radio"]:checked').value;
+            if(e.key==="Enter")
+                {
+                switch(temp) {
+                    case "factorial":
+                        para.innerHTML=factorial(num);
+                        break;
+                    case "fibos":
+                        para.innerHTML=fibo(num);
+                        break;
+                    case "primes":
+                        para.innerHTML=showPrimes(num);
+                }
             }
         });
 
-        
-
         function select(target) {
-            console.log("on mouse down");
-            lab1.select=true;
-            /*let param=document.querySelector("#"+target);
-            param.addEventListener("onmousedown", (e) => {
-                e.select=true;
-            })*/
+            let temp=document.querySelector("#"+target);
+            temp.checked=true;
+            window.setTimeout(() => input.focus(), 0);
         }
-
 
         function factorial(num) {
             if(num<0)return undefined;
@@ -134,13 +177,12 @@
                     res.push(num2);
                     counter++;
                 }
-                //return num2;
                 return res.join("<br>");
             }        
         }
 
         function fibgen(num) {
-            //return((num===5)?88:-1);
+            //One liner version
             return((num===1)?0:(num===2)?1:(fibgen(num-1)+fibgen(num-2)));
             //if(num===1)return 0;
             //if(num===2)return 1;
@@ -149,7 +191,7 @@
         
         function showPrimes(n) {
             let list=[];
-            nextPrime: for (let i = 2; i < n; i++) {
+            nextPrime: for (let i = 2; i <= n; i++) {
 
                 for (let j = 2; j < i; j++) {
                 if (i % j == 0) continue nextPrime;
@@ -159,7 +201,6 @@
             }
             return list.join("<br>");
         }
-
 
     </script>
 </body>
