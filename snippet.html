@@ -4,18 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snippet</title>
+    <link rel="stylesheet" href="snippet.css">
+    <title>Document</title>
 </head>
 <body>
-    
+    <div id="result"></div>
+    <div id="first"></div>
+    <div id="second">
+        <div id="nested1"></div>
+        <div id="nested2"></div>
+    </div>
+    <div id="third"></div>
     <script>
-        for(let i=1;i<6;i++) {
-            var temp=document.createElement("p");
-            temp.id="try"+i;
-            temp.onclick=(function() {console.log(i)});
-            document.body.appendChild(temp);
-            temp.textContent="try"+i;
-        }
+        let result=document.querySelector("#result");
+        //------------------------------
+        let addme=document.createElement("div");
+        addme.style.cssText="background-color: yellow";
+        addme.style.margin="10px";
+        addme.setAttribute("padding", "15px");
+        addme.style.cssText+="height: 80px; width:160px";
+        //addme.style.backgroundColor="blue";
+        addme.setAttribute("id", "addedthis");
+        addme.setAttribute("text-decoration", "blink");
+        //addme.setAttribute("style","background-color:green;width:250px;height:160px");
+        //addme.removeAttribute("style");
+        //addme.style.setProperty("border","1px solid red"); //also works with getProperty
+        //addme.setAttribute("class","testclass");
+        addme.className="testclass";
+        addme.classList.add("otherclass");
+        document.body.appendChild(addme);
+        //addme.style.cssText=''; //removes all styles
+        //window.getComputedStyle(addme).width;
+
+
+
+        //------------------------------
+        //result.innerHTML+="<br>"+value;
     </script>
 </body>
 </html>
