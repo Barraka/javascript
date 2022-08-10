@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="author" content ="Me!">
     <meta name="description" content="This web page is so cool">
-    <script src="example.js" defer></script>
+    <!-- <script src="example.js" defer></script> -->
     <title>Examples</title>
     <style>
         #box {
@@ -33,5 +33,18 @@
     </div>
     <div contenteditable="true" id="edit">Type here:</div>
     <div id="box"></div>
+    <script>
+        function changecolor(e) {
+        let r=Math.floor(Math.random()*255);
+        let g=Math.floor(Math.random()*255);
+        let b=Math.floor(Math.random()*255);
+        //e.target.style.backgroundColor=`rbg(${r},${g},${b})`;
+        let total=`rgb(${r},${g},${b})`;
+        e.target.style.backgroundColor=total;
+
+    }
+    let mybox=document.querySelector("#box");
+    mybox.addEventListener("wheel",(e)=>{changecolor(e)});
+    </script>
   </body>
 </html>

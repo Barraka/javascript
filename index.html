@@ -7,59 +7,32 @@
     <title>Document</title>
 </head>
 <body>
-    
-    <h1>This text</h1>
-    <canvas id="canvas"></canvas>
-    <br>
-    <button class="thisButton" id="thatButton">Start la machina</button>
-    <p id="change">the machine is stopped</p>
-    <div><input id="inputBox" name="otherInput"></div>
-
-    <label for="weather">Select the weather type today: </label>
-        <select id="weather">
-        <option value="">--Make a choice--</option>
-        <option value="sunny">Sunny</option>
-        <option value="rainy">Rainy</option>
-        <option value="snowing">Snowing</option>
-        <option value="overcast">Overcast</option>
-    </select>
-    <p>here</p>
-    <p id="answer">there</p>
-    <label>Select theme:</label>
-    <select id="theme">
-        <option value="green">green</option>
-        <option value="black">black</option>
-        <option value="purple">purple</option>
-        <option value="yellow">yellow</option>
-        <option value="psychadelic">psychadelic</option>
-    </select>
-    <br>
-    <input name="thisInput">
-    <input name="thatInput">
 
     <script>
-        //console.log(location)
-        //alert(varName);
-        //typeof(myVal);
-        //let myVar=32;
+
         //let a = prompt("First number: " , 1);
+
         //----Using template literal
         //alert(`hi, ${name}`);        
 
         //----3 methods of getting input information :
         //const button=document.querySelector("button");
         //const button=document.getElementsByClassName("thisButton");
-        //button[0].addEventListener("click",greet);
-        //or, better:
         //const button=document.getElementById("thatButton");
         //button.addEventListener("click",greet);
+
+        //You can cut a javascript string with the tick quote:
         let longString = `This is gonna be real long...
         I might as well span it over a few lines...
         Oh well, I'm done`;
+
         //----3 methods for extracting a string:
-        //slice(start, end);
-        //substring(start, end);
-        //substr(start, len);
+        //slice(start, end); if ars 1 >2, will return ""
+        //substring(start, end); if<0, will take 0. If > str.length, will take the length. Will swap the 2 args if 1>2
+        //substr(start, len); can have negative first argument
+
+        //Get a specific character:
+        //'cat'.charAt(1);
 
         //"01"==1 => true
         //"01"===1 => false
@@ -127,15 +100,6 @@
             para.innerText+=choice;
         }*/
 
-        //----Set background to black
-        select=document.getElementById("theme");
-        let html=document.querySelector("html");
-        //document.body.style.padding="10px";
-        function update(bgColor,txtColor) {
-            console.log(bgColor);
-            html.style.backgroundColor=bgColor;
-            html.style.color=txtColor;
-        }
         //using the "conditional operator" ? ==> let myvar = (cond1>15) ? doThisIfYes : doThisIfNo;
         //select.addEventListener("change", () => select.value === 'black' ? update ("black", "white") : update ("white" , "black"));
         select.addEventListener("change", ()=> update(select.value, "orange"));
@@ -262,7 +226,39 @@
         //let arr2 = [3, 4, 5];
         //let arr3=[...arr1, ...arr2]; ==> [3,4,5,0,1,2]
 
-        
+        //in CSS stylesheet, attribute selector
+        //[contenteditable] {outline:0px solid transparent;}
+
+        //Different ways to access content:
+        //document.body.firstChild.data;
+        //document.body.firstChild.nodeValue;
+        //document.body.firstChild.textContent;
+        //document.body.firstChild.innerText;
+        //document.body.firstChild.innerHTML;
+
+        //Adding an icon for bookmark:
+        //<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+        //cycle through all the child elements of a div:
+        //let container=document.querySelector("#containerdiv");
+        //container.childNodes.forEach((e)=>{...)
+        //each 'e' gives something like: '<button id="1">Click me</button>'
+
+        //check to see if an element is of a specific type:
+        //let container=document.querySelector('#otherbtn').children;
+        //for(let b of container) {if b.tagName==='BUTTON'...
+
+        //Accessing a specific element attribute
+        //<audio data-key="45" src="sound.wav"></audio>
+        //document.querySelector("audio[data-key]");
+
+        // let listen=window.addEventListener('keydown',(e)=> {
+        //     let audio=document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        //     console.log(audio);
+        // });
+
+
+
 
 
 

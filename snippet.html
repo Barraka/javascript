@@ -9,6 +9,10 @@
 </head>
 <body>
     <div id="result"></div>
+    
+    <p>This is original text
+        <div>text inside a nested div</div>
+    </p>
     <div id="first"></div>
     <div id="second">
         <div id="nested1"></div>
@@ -18,6 +22,9 @@
     <script>
         let result=document.querySelector("#result");
         //------------------------------
+        let myp=document.querySelector('p').firstChild;
+        let para=document.querySelector('p');
+        let compStyles=window.getComputedStyle(para);
         let addme=document.createElement("div");
         addme.style.cssText="background-color: yellow";
         addme.style.margin="10px";
@@ -32,10 +39,43 @@
         //addme.setAttribute("class","testclass");
         addme.className="testclass";
         addme.classList.add("otherclass");
+        addme.classList.toggle('active'); //add it or remove it if it already has it
         document.body.appendChild(addme);
         //addme.style.cssText=''; //removes all styles
         //window.getComputedStyle(addme).width;
+        
+        //selecting mutliple elements from parent element:
+        //let container2=document.querySelector("#otherbtn").querySelectorAll("button");
+        //or:
+        //container.children ==> [btn1, btn2...]
 
+
+        let answer=[];
+        //Get value of all computedSyles, and list them in an array
+        let limit=compStyles.length;
+        for(let i=0;i<limit;i++) {
+            let curelement=compStyles[i];
+            let curvalue=compStyles.getPropertyValue(curelement);
+            if(curvalue!=='0px' && curvalue!=='auto' && curvalue !=='none' && curvalue !=='normal') {
+                answer.push([curelement, curvalue]);
+            }            
+        }
+
+        //Hiding an element
+        //para.style.display="none";
+
+        //Looping through an element's attributes
+        let answer2=[];
+        for(let x in addme) {
+            let temp=eval(`addme.${x}`);
+            if(temp!==null && temp!=='')answer2.push([x,temp])            
+        }
+        para.height="200px";
+        para.contentEditable=true;
+        let thing;
+
+        //line to add in header for an external js file
+        //<script src="js-file.js" defer><\/script> 
 
 
         //------------------------------
