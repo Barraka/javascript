@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #trail1 {
+          position:absolute;
+          width:50px;
+          height: 50px;
+          border-radius: 50%;
+          background-color: orangered;
+          margin-left: -25px;
+          margin-top:-25px;
+        }
+
+        .thisclass {
+          color: green;
+        }
+
+        .thatclass {
+          border:1px solid yellow;
+        }
+      </style>
+</head>
+<body>
+  <div id="pos" data-foo-foo='foo' data-bar-bar='bar' style="position:relative"><div id="coord"></div></div>
+  <div id="coord"></div>
+  <a href="#">hi</a>
+    
+  <div id="trail1"class="thisclass thatclass"><div>
+  
+  <script>
+      let balloon=document.querySelector("#trail1");
+      let pos=document.querySelector("#pos");
+      let coord=document.querySelector("#coord");
+
+      window.addEventListener("mousemove",(e)=>{
+        let valx=e.clientX;
+        let valy=e.clientY;
+        let balx=0;
+        let baly=0;
+        if(balloon.style.left===''){balx=0;}
+        else {balx=parseInt(balloon.style.left);}
+        if(balloon.style.top===''){baly=0;}
+        else {baly=parseInt(balloon.style.top);}        
+
+        let distance=Math.hypot((valx-balx),(valy-baly));
+        if(distance>50) {
+          
+          let newx=balx+(valx-balx)*((distance-50)/distance);
+          let newy=baly+(valy-baly)*((distance-50)/distance);
+          if(newx>50 && newy>50) {
+            balloon.style.left=newx+'px';
+          balloon.style.top=newy+'px';
+          }
+        }
+        
+      });
+      
+      
+  </script>
+</body>
+</html>

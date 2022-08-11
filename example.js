@@ -14,30 +14,25 @@ para5.textContent="ME TOO!";
 para3.append(para4, para5);
 document.body.append(para1, para2, para3);*/
 
-let btn=document.querySelector("#btn");
-btn.onclick = () => alert('Hello World');
-let btn3=document.querySelector("#btn3");
-btn3.addEventListener('click', (e)=> {
-e.target.style.background="blue";
-});
 
-let buttons=document.querySelectorAll('button');
-buttons.forEach((b)=> {
-b.addEventListener('click', ()=>alert(b.id));
-});
 
 let edit=document.querySelector('#edit');
 function clickme(b) {
     edit.textContent+=b;
 }
 
-let container=document.querySelector('#otherbtn').children;
-for(let b of container) {
+// let container=document.querySelector('#otherbtn').children;
+// for(let b of container) {
 
-    b.addEventListener('click',(e)=> {
-        clickme(b);
-    });
-}
+//     b.addEventListener('click',(e)=> {
+//         clickme(b);
+//     });
+// }
+
+let container=document.querySelector("#otherbtn");
+container.addEventListener('click',(e)=> {
+    clickme(e.target.id);
+});
 
 //----
 function changecolor(e) {
@@ -52,3 +47,39 @@ function changecolor(e) {
 let mybox=document.querySelector("#box");
 mybox.addEventListener("wheel",(e)=>{changecolor(e)});
 
+// let para=document.querySelectorAll("div");
+// for(x of para){if(x.id==='box')x.remove()};
+
+let para=document.querySelector("#tryme");
+edit.innerHTML+=para.clientHeight +"<br>" + para.offsetHeight;
+
+
+let lastX; // Tracks the last observed mouse X position
+  let bar = document.querySelector("#dragme");
+  bar.addEventListener("mousedown", event => {
+    if (event.button == 0) {
+      lastX = event.clientX;
+      window.addEventListener("mousemove", moved);
+      //event.preventDefault(); // Prevent selection
+    }
+  });
+
+  function moved(event) {
+    if (event.buttons == 0) {
+      window.removeEventListener("mousemove", moved);
+    } else {
+      let dist = event.clientX - lastX;
+      let newWidth = Math.max(1, bar.offsetWidth + dist);
+      bar.style.width = newWidth + "px";
+      lastX = event.clientX;
+    }
+  }
+
+  document.body.appendChild(document.createTextNode(
+    "supercalifragilisticexpialidocious ".repeat(1000)));
+
+  let bar2 = document.querySelector("#progress");
+  window.addEventListener("scroll", () => {
+    let max = document.body.scrollHeight - innerHeight;
+    bar2.style.width = `${(pageYOffset / max) * 100}%`;
+  });

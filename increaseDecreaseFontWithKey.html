@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #balloon {
+          font-size: 15px;
+        }
+      </style>
+</head>
+<body>
+    <div id="text"></div>
+  <div id="balloon">🎈<div>
+  
+  <script>
+      let balloon=document.querySelector("#balloon");
+      let text=document.querySelector("#text");
+
+      window.addEventListener('keydown',changeBalloon);
+
+
+      function changeBalloon(e) {
+        if(e.keyCode==38){
+          let currentSize=window.getComputedStyle(balloon).getPropertyValue('font-size');
+          let newssize=parseFloat(currentSize)*1.1;
+          balloon.style.fontSize=newssize+"px";
+          if(newssize>200) {
+            balloon.textContent="💥";
+            window.removeEventListener('keydown',changeBalloon);
+          }
+        }
+
+        else if(e.keyCode==40){
+          let currentSize=window.getComputedStyle(balloon).getPropertyValue('font-size');
+          let newssize=parseFloat(currentSize)*0.9;
+          balloon.style.fontSize=newssize+"px";
+          }
+      }
+
+  </script>
+</body>
+</html>

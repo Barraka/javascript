@@ -31,3 +31,14 @@ p {
 [contenteditable] {
     outline:0px solid transparent;
 }
+
+/* <p> elements with an id of "main" and with classes of firstClass and secondClass
+p#main.firstClass.secondClass {...} */
+
+/* targets all div tags that are direct children of p:
+p > div {...} */
+
+/* targets all div tags of p, whether direct or indirect:
+p div {...} */
+
+

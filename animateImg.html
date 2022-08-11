@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <img src="cat.jpeg" style="position:relative">
+    <script>
+        let cat=document.querySelector("img");
+        let angle=Math.PI / 2;
+        function animate(time,lastTime) {
+            if(lastTime!=null) {
+                angle+=(time-lastTime)*0.0001;
+            }
+            cat.style.top=20+(Math.sin(angle)*20)+"px";
+            cat.style.left=50+(Math.cos(angle)*200)+"px";
+            requestAnimationFrame(newTime=>animate(newTime,time));
+        }
+        requestAnimationFrame(animate);
+    </script>
+</body>
+</html>

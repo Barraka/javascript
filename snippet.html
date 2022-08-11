@@ -49,6 +49,9 @@
         //or:
         //container.children ==> [btn1, btn2...]
 
+        //in CSS stylesheet, attribute selector
+        //[contenteditable] {outline:0px solid transparent;}
+
 
         let answer=[];
         //Get value of all computedSyles, and list them in an array
@@ -67,7 +70,7 @@
         //Looping through an element's attributes
         let answer2=[];
         for(let x in addme) {
-            let temp=eval(`addme.${x}`);
+            let temp=addme[x]; //eval(`addme.${x}`);
             if(temp!==null && temp!=='')answer2.push([x,temp])            
         }
         para.height="200px";
@@ -76,7 +79,9 @@
 
         //line to add in header for an external js file
         //<script src="js-file.js" defer><\/script> 
-
+        
+        //block elements = <p>,<h2>...
+        //inline elements = <strong>, <a>...
 
         //------------------------------
         //result.innerHTML+="<br>"+value;

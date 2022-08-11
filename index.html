@@ -226,9 +226,6 @@
         //let arr2 = [3, 4, 5];
         //let arr3=[...arr1, ...arr2]; ==> [3,4,5,0,1,2]
 
-        //in CSS stylesheet, attribute selector
-        //[contenteditable] {outline:0px solid transparent;}
-
         //Different ways to access content:
         //document.body.firstChild.data;
         //document.body.firstChild.nodeValue;
@@ -257,6 +254,55 @@
         //     console.log(audio);
         // });
 
+        //Get computed style of a specific element:
+        // let para=document.querySelector("#elem");
+        // let comp=window.getComputedStyle(para);
+        // also, window.getComputedStyle(para).backgroundColor ==> 'rgb(255,69,0)'
+        // let list=[];
+        // for(x of comp)list.push([x,comp.x]);
+
+        // Remove a certain id from DOM:
+        // let para=document.querySelectorAll('div');
+        // for(x of para){if(x.id==="thisid")x.remove()};
+        // The element can be added back later, it's tag is still stored in the object
+
+        //Replace a node with another one:
+        //divA.parentNode.replaceChild(newdiv,divA);
+
+        //To determine if a variable is iterable:
+        //document[Symbol.iterator] ==> undefined
+        //mylist[Symbol.iterator] ==> f(...)
+
+        //Working with tag/element attributes
+        //para.hasAttribute
+        //para.getAttribute
+        //para.removeAttribute
+        //para.setAttribute
+
+        //Two ways to access an element's class(es):
+        // para.classList; => {0="big", 1="brown", 2="bear", length=3, ...}
+        // para.className; => "big brown bear"
+        // para.classList.contains('thatclass')
+        // para.classList.add('thisclass')
+        // para.classList.toggle('otherclass')
+
+        //The data- custom elements have values without the hiphen, instead is in camelCase
+        // <div data-foo-foo="foo" data-bar-bar="bar"></div>​
+        // para.dataset.fooFoo; => 'foo'
+        
+        //querySelector can be used with CSS selector syntax
+        // para=document.querySelector('#score>div>ul');
+
+        //document.querySelectorAll(*) ==document.all => targets all tags in the DOM
+        // document.querySelector('div').querySelector('img') => also possible to chain selectors
+        //document.images, document.links, document.scripts, document.styleSheetss ==> target all specific
+
+
+
+
+
+
+        
 
 
 

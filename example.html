@@ -13,19 +13,16 @@
             height:200px;
             background-color:orange;
         }
+        #progress {
+            border-bottom: 2px solid blue;
+            width: 0;
+            position: fixed;
+            top: 0; left: 0;
+        }
+        
     </style>
   </head>
   <body>
-    <h1>THE TITLE OF YOUR WEBPAGE</h1>     
-    <div id="container">
-        <div class="content">
-        This is the glorious text-content!
-        </div>
-    </div>
-    <button onclick="alert('Hello World')">Click Me</button>
-    <button id="btn">2nd click me</button>
-    <button id="btn3">3rd click me</button>
-
     <div id='otherbtn'>
         <button id="1">Click me</button>
         <button id="2">Click me</button>
@@ -33,5 +30,9 @@
     </div>
     <div contenteditable="true" id="edit">Type here:</div>
     <div id="box"></div>
+    <p style="border: 3px solid red" id="tryme">I'm text in a p</p>
+    <div style="background: orange; width: 60px; height: 20px" id="dragme"></div>
+    <div id="progress"></div>
+
   </body>
 </html>
