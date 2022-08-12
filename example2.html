@@ -26,9 +26,17 @@
       </style>
 </head>
 <body>
-  <div id="pos" data-foo-foo='foo' data-bar-bar='bar' style="position:relative"><div id="coord"></div></div>
-  <div id="coord"></div>
-  <a href="#">hi</a>
+  <div id="pos" data-foo-foo='foo' data-bar-bar='bar' style="position:relative"></div>
+  <div id="coord" style="background-color: red">
+    <a href="#">hi</a>
+    <div id="myid1">myid1</div>
+    <div id="myid2">myid2
+      <div id="myid3">myid3</div>
+    </div>
+  
+  
+  </div>
+  
     
   <div id="trail1"class="thisclass thatclass"><div>
   
@@ -36,6 +44,9 @@
       let balloon=document.querySelector("#trail1");
       let pos=document.querySelector("#pos");
       let coord=document.querySelector("#coord");
+      let anchor=document.querySelector('a');
+
+      
 
       window.addEventListener("mousemove",(e)=>{
         let valx=e.clientX;
@@ -59,8 +70,33 @@
         }
         
       });
+
+let child=coord.children;
+      function replace() {
+        let len=child.length-1;
+        for(let x=len;x>=0;x--) {
+          coord.parentNode.insertBefore(child[x],coord.nextElementSibling);
+        }
+        coord.parentNode.removeChild(coord);
+      }
       
+      function replace2() {
+        let string=coord.innerHTML;
+        let tempdoc=new DOMParser().parseFromString(string,"text/html");
+        coord.parentNode.insertBefore(tempdoc.body,coord);
+        coord.parentNode.removeChild(coord);
+      }
       
+      function replace3() {
+        let newpara=document.createElement('div');
+        newpara.id="creation";
+        newpara.innerHTML=coord.innerHTML;
+        coord.parentNode.replaceChild(newpara,coord);
+        // coord.parentElement.insertBefore(newpara,coord.parentElement.nextSibling);
+        // coord.parentNode.removeChild(coord);
+        
+      }
+    
   </script>
 </body>
 </html>

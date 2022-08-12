@@ -177,7 +177,7 @@
         //Nested conditional statements
         //function fibgen(num) {return((num===1)?0:(num===2)?1:(fibgen(num-1)+fibgen(num-2)))};
 
-        //Using inline mouse events for quick formatting
+        //Using inline mouse events for quick formatting. BAD
         //<div onmouseover="this.style.backgroundColor='rgb(100,100,100)'">
 
         //One line arrow function:
@@ -185,7 +185,7 @@
         //let sayHi = () => alert("Hello!"); //No arguments, need to put empty parenthesis
 
         //Rounded corners:
-        //border-radius: 10px;
+        //border-radius: 10px; Or 50% for circle
         
         //Sleep function:
         // function sleep(milliseconds) {
@@ -201,6 +201,7 @@
         //list=["a","b","c"]; list2=[];
         //for(let x of list){list2.push(x.toUpperCase)}
 
+        //Using the spread operator:
         // removeFromArray = function(array,...values) {
         //     let result=array.filter((e)=>!values.includes(e));
         // }
@@ -224,7 +225,7 @@
 
         //let arr1 = [0, 1, 2];
         //let arr2 = [3, 4, 5];
-        //let arr3=[...arr1, ...arr2]; ==> [3,4,5,0,1,2]
+        //let arr3=[...arr1, ...arr2]; ==> [0,1,2,3,4,5]
 
         //Different ways to access content:
         //document.body.firstChild.data;
@@ -297,12 +298,93 @@
         // document.querySelector('div').querySelector('img') => also possible to chain selectors
         //document.images, document.links, document.scripts, document.styleSheetss ==> target all specific
 
+        //Text nodes functions:
+        // pElementText.appendData('!');
+        // pElementText.deleteData(7,5);
+        // pElementText.insertData(7,'Blue ');
+        // pElementText.replaceData(7,5,'Bunny ');
+        // console.log(pElementText.substringData(7,10));
 
+        //copying a node and leaving it in memory for future copy:
+        //anchor.appendChild(para.cloneNode(true));
 
+        //Lists all the styles rules applyied within a stylesheet.
+        //document.styleSheets[0].rules
+        //can then be accessed with: document.styleSheets[0].rules[2]
 
+        //2 ways to access specific styles sheet rules:
+        // document.styleSheets[0].rules[0].cssText
+        // document.styleSheets[0].cssRules[0].cssText
+        // '#trail1 { position: absolute; width: 50px; height: 50px; border-radius: 50%; background-color: orangered; margin-left: -25px; margin-top: -25px; }'
+        //document.styleSheets[0].rules[1].style.setProperty('position','relative')
+        //document.styleSheets[0].rules[1].style.color='red'
+        //document.styleSheets[0].disabled=true
 
+        //function to get all the scripts from a web page:
+        // Array.prototype.slice.call(document.scripts).forEach(function(elm){
+        //     console.log(elm); 
+        // });
 
+        //Select all div tags + link tags with the class info:
+        //let params=document.querySelectorAll("div,a.info")
+        //var matches = document.querySelectorAll("input[type='text']");
+
+        //Function to make it faster to type, e.g. let para = $('#myid");
+        // function $(selector, context) {
+        //     return (context || document).querySelectorAll(selector);
+        // }
         
+        //3 ways to remove a tag element "elem", but keep the encapsulated elements:
+        //
+        //while (elem.firstChild) parent.insertBefore(elem.firstChild, elem);
+        //
+        // function replace() {
+        //     let len=child.length-1;
+        //     for(let x=len;x>=0;x--) {
+        //     coord.parentNode.insertBefore(child[x],coord.nextElementSibling);
+        //     }
+        //     coord.parentNode.removeChild(coord);
+        // }
+        
+        // function replace2() { //but destroys eventual event handlers
+        //     let string=coord.innerHTML;
+        //     let tempdoc=new DOMParser().parseFromString(string,"text/html");
+        //     coord.parentNode.insertBefore(tempdoc.body,coord);
+        //     coord.parentNode.removeChild(coord);
+        // }
+
+        //   function replace3() {
+        //     let newpara=document.createElement('div');
+        //     newpara.innerHTML=coord.innerHTML;
+        //     coord.parentElement.insertBefore(newpara,coord.parentElement.nextSibling);
+        //     coord.parentNode.removeChild(coord);
+        // }
+
+        //elem.parentNode.removeChild(elem);
+
+        //wrap an new element around existing one:
+        // function wrap(el, wrapper) {
+        //     el.parentNode.insertBefore(wrapper, el);
+        //     wrapper.appendChild(el);
+        // }
+
+        //Clone a node:
+        //var foo = el.cloneNode(true);
+        
+        //Smart way to iterate through some divs:
+        // var divs = document.querySelectorAll('div'), i = divs.length;
+        // while (i--) {
+        //     divs[i].style.color = "green";
+        // }
+        //or:
+        //divs.forEach(e=>e.style.color="green");
+
+        //let divs=document.querySelectorAll('body>*');
+        //divs.forEach(e=>e.style.backgroundColor='orange');
+
+        //document.body.children ==> HTMLCollection ==>only elements, can be accessed by name, id, or index
+        //document.body.childNodes ==> NodeList => also counts textNodes ==>can only be accessed by indes
+
 
 
 
