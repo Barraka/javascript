@@ -295,7 +295,6 @@
         // para=document.querySelector('#score>div>ul');
 
         //document.querySelectorAll(*) ==document.all => targets all tags in the DOM
-        // document.querySelector('div').querySelector('img') => also possible to chain selectors
         //document.images, document.links, document.scripts, document.styleSheetss ==> target all specific
 
         //Text nodes functions:
@@ -322,8 +321,10 @@
 
         //function to get all the scripts from a web page:
         // Array.prototype.slice.call(document.scripts).forEach(function(elm){
-        //     console.log(elm); 
+        //     list.push(e); 
         // });
+        //Acutally, it's the same as:
+        //document.scripts[0];
 
         //Select all div tags + link tags with the class info:
         //let params=document.querySelectorAll("div,a.info")
@@ -336,10 +337,10 @@
         
         //3 ways to remove a tag element "elem", but keep the encapsulated elements:
         //
-        //while (elem.firstChild) parent.insertBefore(elem.firstChild, elem);
+        //while (elem.firstChild) elem.parentNode.insertBefore(elem.firstChild, elem);
         //
         // function replace() {
-        //     let len=child.length-1;
+        //     let len=coord.children.length-1;
         //     for(let x=len;x>=0;x--) {
         //     coord.parentNode.insertBefore(child[x],coord.nextElementSibling);
         //     }
@@ -353,19 +354,20 @@
         //     coord.parentNode.removeChild(coord);
         // }
 
-        //   function replace3() {
+        //   function replace3() {//not really becaus it creates a div
         //     let newpara=document.createElement('div');
         //     newpara.innerHTML=coord.innerHTML;
         //     coord.parentElement.insertBefore(newpara,coord.parentElement.nextSibling);
         //     coord.parentNode.removeChild(coord);
         // }
 
+        //Removing an element:
         //elem.parentNode.removeChild(elem);
 
         //wrap an new element around existing one:
-        // function wrap(el, wrapper) {
-        //     el.parentNode.insertBefore(wrapper, el);
-        //     wrapper.appendChild(el);
+        // function wrap(elOld, wrapper) {
+        //     elOld.parentNode.insertBefore(wrapper, elOld);
+        //     wrapper.appendChild(elOld);
         // }
 
         //Clone a node:
@@ -379,11 +381,63 @@
         //or:
         //divs.forEach(e=>e.style.color="green");
 
-        //let divs=document.querySelectorAll('body>*');
         //divs.forEach(e=>e.style.backgroundColor='orange');
 
         //document.body.children ==> HTMLCollection ==>only elements, can be accessed by name, id, or index
         //document.body.childNodes ==> NodeList => also counts textNodes ==>can only be accessed by indes
+
+        //Adding a branch to git. Using the console, inside the repo you want to branch:
+        // git checkout -b branchName
+        //See all of the current repo's branches:
+        // git branches
+        //Going back to main:
+        // git checkout main
+        //Merge branch back to main:
+        // git merge branchName
+
+        //Hover over a span element, to show a div (like a tooltip):
+        // span:hover + div {
+        // display: block;
+        // }
+
+        // btn.style.pointer="cursor";
+
+        //Declaring objects:
+        // let user = {
+        // name: "John",
+        // age: 30,
+        // "likes birds": true  // multiword property name must be quoted
+        // };
+
+        //user["likes birds"] = true;
+        //delete user["likes birds"];
+        //alert( user[key] ); but not alert( user.key ) // undefined
+
+        //"Computed properties":
+        // let fruit = prompt("Which fruit to buy?", "apple");
+        // let bag = {[fruit]: 5,};
+
+        //Property value shorthand:
+        // function makeUser(name, age) {return {name, age,};} ==> same as name:name, age:age
+
+        //let obj = {0: "test" }; ==> same as "0":"test"
+        //alert( "age" in user ); // true, user.age exists
+        //for (let key in user) {alert(key);alert(user[key]);
+
+
+
+
+        
+
+        
+
+
+
+
+
+
+
+
 
 
 
