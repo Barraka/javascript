@@ -8,31 +8,68 @@
     <script src="example.js" defer></script>
     <title>Examples</title>
     <style>
-        #box {
-            width:200px;
-            height:200px;
-            background-color:orange;
+        body {
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            background-color: cornflowerblue;
+            gap:50px;
         }
-        #progress {
-            border-bottom: 2px solid blue;
-            width: 0;
-            position: fixed;
-            top: 0; left: 0;
+        #but1 {
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            width:50px;
+            height:50px;
+        }
+        #but2 {
+            width:50px;
+            height:50px;
+            border-radius: 10px;
+            box-shadow: 2px 4px 2px 4px rgb(122, 158, 133), 8px 8px 5px 6px rgb(12, 29, 16);
+            background-color: rgb(31, 117, 57)
+        }
+        #but2:hover {
+            /* height:45px; */
+            margin-top:5px;
+            margin-bottom: -2px;
+        }
+        #but3 {
+            height:95%;
+            width:95%;
+            box-shadow: 1px 1px 16px 2px rgb(31, 46, 35);
+            border-radius: 10px;
+        }
+
+        #outer {
+            display: flex;
+        }
+        #inner {
+            width:50px;
+            height:50px;
+            border-radius: 10px;
+            /* box-shadow: 2px 2px 2px 5px rgb(122, 158, 133), 4px 4px 4px 10px rgb(40, 56, 47),; */
+            box-shadow: 2px 4px 2px 4px rgb(122, 158, 133), 8px 8px 5px 6px rgb(12, 29, 16);
+            background-color: rgb(31, 117, 57)
+        }
+        #middle {
+            height:95%;
+            width:95%;
+            box-shadow: 1px 1px 16px 2px rgb(31, 46, 35);
+            border-radius: 10px;
         }
         
     </style>
   </head>
   <body>
-    <div id='otherbtn'>
-        <button id="1">Click me</button>
-        <button id="2">Click me</button>
-        <button id="3">Click me</button>
+    <div id="but1">
+        <div id="but2"><div id="but3"></div></div>
+        
     </div>
-    <div contenteditable="true" id="edit">Type here:</div>
-    <div id="box"></div>
-    <p style="border: 3px solid red" id="tryme">I'm text in a p</p>
-    <div style="background: orange; width: 60px; height: 20px" id="dragme"></div>
-    <div id="progress"></div>
+    <div id="button">
+        <div id="inner"><div id="middle"></div></div>
+        
+    </div>
 
   </body>
 </html>

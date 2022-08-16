@@ -402,7 +402,7 @@
 
         // btn.style.pointer="cursor";
 
-        //Declaring objects:
+        //Declaring objects:  (this is an object literal, because declared in code =/= dynamically)
         // let user = {
         // name: "John",
         // age: 30,
@@ -423,6 +423,49 @@
         //let obj = {0: "test" }; ==> same as "0":"test"
         //alert( "age" in user ); // true, user.age exists
         //for (let key in user) {alert(key);alert(user[key]);
+        
+        //user{} acts as the namespace
+        //
+        //let person = {
+        //     name: {
+        //         first: 'Bob',
+        //         last: 'Smith',
+        //     }
+        // };
+        //persone.name.first
+
+        //Constructors:
+        // function Person(name) {
+        // this.name = name;
+        // this.introduceSelf = function() {
+        //     console.log(`Hi! I'm ${this.name}.`);}}
+        //
+        //let Peter = new Person('Peter');
+
+        // const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+        // let otherreduce = data.reduce((t,i) => {
+        //     if(!t[i])t[i]=0;
+        //     t[i]++;
+        //     return t;
+        // },{});
+
+        //let othersort=people.sort((a,b)=> {return((a.split()[0])>(b.split()[0])) ? 1 : -1;});
+        //let mylist=Array.from(ele2).filter(x=>x.textContent.includes('de')).map(x=>x.textContent);
+        //let mysort3=inventors.sort((a,b)=>((a.passed-a.year)>(b.passed-b.year)) ? 1 : -1);
+        //let myreduce= inventors.reduce((t,i)=> {return t + (i.passed-i.year);},0);
+        //let mysort2=inventors.sort((a,b)=>(a>b) ? 1 : -1);
+        //let mymap=inventors.map(x=>[x.first,x.last]);
+        //let myfilter=inventors.filter(x=>(x.year>=1800 && x.year <=1859));
+        //let mysome=people.some(x=>(2022-x.year>20));
+        //let myevery=people.every(x=>(2017-x.year>20));
+        //let myfind = comments.find(x=>((x.id===823423)?1:0));
+
+        //Changes to arguments are not visible (reflected) outside the function.
+        //Changes to object properties are visible (reflected) outside the function.
+
+        //
+        
+        
 
 
 
