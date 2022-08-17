@@ -42,3 +42,18 @@ p > div {...} */
 p div {...} */
 /*  */
 
+/* div .row * {... => all elements that are descendants / child of the div elements and row class.
+
+li + a {... => adjacent combinator: the first 'a' after each 'li'. 
+
+span, div {... => all 'span' and all 'div' elements
+
+div.small {... => select the divs with the 'small' class
+
+li ~ div {... => sibling combinator: selects 'a' elements following a 'li' element.  */
+
+/* #mydiv:first-child{... */
+/* #mydiv:last-child; :nth-child(odd); 
+
+div:not(.myclass) {... => all 'a' tags that are not of the 'myclass' class.  */
+
