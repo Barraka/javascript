@@ -53,7 +53,11 @@ div.small {... => select the divs with the 'small' class
 li ~ div {... => sibling combinator: selects 'a' elements following a 'li' element.  */
 
 /* #mydiv:first-child{... */
-/* #mydiv:last-child; :nth-child(odd); 
+/*   */
 
-div:not(.myclass) {... => all 'a' tags that are not of the 'myclass' class.  */
+/* pseudo-elements, used to style a specific part of the element: 
+div::first-line 
+video::backdrop */
+
+
 
