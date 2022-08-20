@@ -59,5 +59,9 @@ li ~ div {... => sibling combinator: selects 'a' elements following a 'li' eleme
 div::first-line 
 video::backdrop */
 
+/* .box[style] {...} target all elements with class 'box', and who have a style="..." attribute set  */
+
+/* display:flow-root  => when you want to float 2 or more elemnts, and prevent over-flowing, or margins collapsing */
+
 
 
