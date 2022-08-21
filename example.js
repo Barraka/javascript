@@ -21,9 +21,9 @@ function foobar(n) {
 function letterinastring(s) {
     let result=[];
     let len=s.length
-    for(let i=0;i<len;i++) {
-        if(i%3==0)result.push(s[i]);
+    for(let i=0;i<=len;i++) {
+        if(i%3==0)result.push(s[i-1]);
     }
-    return result.reverse().join("");
+    return result.join("");
 }   
 console.log(letterinastring("this is a beautifulstring"));
