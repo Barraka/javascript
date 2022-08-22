@@ -44,7 +44,7 @@ main div {...} */
 
 /* div .row * {... => all elements that are descendants / child of the div elements and row class.
 
-li + a {... => adjacent combinator: the first 'a' after each 'li'. 
+li + a {... => adjacent sibling combinator: the first 'a' after each 'li'. 
 
 span, div {... => all 'span' and all 'div' elements
 
@@ -64,6 +64,8 @@ img[src="puppy.jpg"]
 [attribute^="value"] - ^= Will match strings from the start.
 [attribute$="value"] - $= Will match strings from the end.
 [attribute*="value"] - *= The wildcard selector will match anywhere
+Attribute Hyphenated Selector: 
+a[lang|="en"] {...} => may be hyphen-seperated, but must come first, ex: <a href="#" lang="en-US">...</a>
 ----
 [src$='.jpg']
 a[href*="example"]
@@ -76,8 +78,9 @@ a[class~="logo"] => <a> elements whose class attribute contains the word "logo"
 mybutton:hover
 #mydiv:first-child{...
 input:invalid
-:fullscreen ; :modal ; :picture-in-picture ; :checked ; :link ; :playing ; :root ; :nth-child ; 
+:fullscreen ; :modal ; :picture-in-picture ; :link ; :playing ; :root ; :nth-child ; 
 :active ; :focus; 
+input:enabled ; input:disabled ; input:checked
 */
 
 /* pseudo-elements, used to style a specific part of the element: 
@@ -91,6 +94,8 @@ pseudo-elements used as generated content:
 ::after
 ::marker
 ::selection
+blockquote::before {content: open-quote;}
+
 */
 
 /* .box[style] {...} target all elements with class 'box', and who have a style="..." attribute set  */
@@ -104,4 +109,10 @@ The new clearfix "hack" is safer than "overflow: auto":
     clear: both;
     display:
     
-    
+Media queries:
+@media all and (min-width: 800px) and (max-width: 1024px) {...}
+@media only screen and (orientation: portrait) {...}
+@media all and (min-device-aspect-ratio: 16/9) {...}
+
+
+

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .tooltip {
+            color:orange;
+            font-size:1.5rem;
+            text-decoration: underline;
+            position:relative;
+        }
+        span[data-tooltip]::after {
+            content:attr(data-tooltip);
+            display:block;
+            position:absolute;
+            background-color: aqua;
+            padding: 1rem 1.5rem;
+            color:white;
+            border-radius:10px;
+            bottom:-100%;
+            left:0;
+            white-space: nowrap;
+            transform:scale(0);
+            /* transition:all ease-out 300ms; */
+            transition:transform ease-out 300ms,
+            bottom ease-out 300ms;
+            /* transition:bottom ease-out 300ms; */
+        }
+        span[data-tooltip]:hover::after {
+            transform:scale(1);
+            bottom:100%;
+
+        }
+        p {
+            counter-reset: mycounter;
+            
+        }
+        section {
+            position:relative;
+            padding-left: 3rem;
+            margin:20px;
+        }
+        section::before {
+            counter-increment: mycounter;
+            content:counter(mycounter);
+            position:absolute;
+            background: rgb(255, 211, 128);;
+            width:2rem;
+            height:2rem;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            left:4px;
+            top:-6px;
+            border-radius: 50%;
+            border:1px solid magenta;
+            box-sizing: border-box;
+            color:rgb(255, 14, 255);
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+        .card {
+            position:relative;
+            margin: 1rem;
+            background: gray;
+            text-align: center;
+        }
+        .card::before, .card::after {
+            content:"";
+            position:absolute;
+            top:1.25rem;
+            bottom:1.25rem;
+            left:1.25rem;
+            right:1.25rem;
+        }
+        .card::before {
+            /* background: pink; */
+            transform: scale(0,1);
+            transition: transform ease-out 300ms;
+            border-top: 1px solid white;
+            border-bottom: 1px solid white;
+        }
+        .card::after {
+            /* background: pink; */
+            transform: scale(1,0);
+            transition: transform ease-out 300ms;
+            border-left: 1px solid white;
+            border-right: 1px solid white;
+        }
+        .card:hover::before {
+            transform: scale(1.01,1);            
+        }
+        .card:hover::after {
+            transform: scale(1,1.01);            
+        }
+        .card__img {
+            max-width: 100%;
+            display: block;
+            transition: opacity ease-out 300ms;
+            opacity:1;
+        }
+        .card:hover .card__img {
+            opacity: 0.4;
+        }
+        .card__text {
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            color:white;
+            opacity: 0;
+            transition:opacity ease-out 300ms;
+        }
+        .card:hover .card__text {
+            opacity: 1;
+        }
+        .card__title {
+            font-size: 40px;
+        }
+        .card__text {
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        This is an example of a tooltip.
+    </h1>
+    <p>
+        Contrary to popular belief, <span class="tooltip" data-tooltip="Some dummy text for the printing industry">Lorem Ipsum</span> is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia.
+        <section> up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+        </section>
+        <section>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance.
+        </section>
+        <section> The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, a dolorem rem placeat, expedita eveniet dignissimos illum itaque dicta unde, recusandae cupiditate alias? Vel, adipisci minima in quam quod saepe? lo10
+            .
+        </section>
+    </p>
+    <p>
+        <div class="container">
+            <div class="card">
+                <img class="card__img" src="https://images.unsplash.com/photo-1660866837323-0565dfb71ca6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="building">
+                <div class="card__text">
+                    <h3 class="card__title">Card title</h3>
+                    <p class="card__body">And here is some text</p>
+                </div>
+            </div>
+        </div>
+    </p>
+</body>
+</html>
