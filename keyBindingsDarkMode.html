@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Examples</title>
+    <style>
+         
+    </style>
+  </head>
+  <body>   
+    
+
+    <script>
+        //Script used for Violentmonkey to enable dark mode manually
+        window.addEventListener('keydown',toggle);
+        function toggle(k) {
+            if(k.ctrlKey && k.altKey && k.key==='d')darkmode();
+        }
+        function darkmode() {
+            let para=document.querySelectorAll('*');
+            let sep=document.querySelectorAll('p, ol, ul,pre, h1, h2, h3, h4, h5, h6')
+            para.forEach(x=>x.style.color="white");
+            para.forEach(x=>x.style.backgroundColor="black");
+            sep.forEach(x=>x.style.outline="1px solid gray");
+            let para1=document.querySelectorAll('a');
+            para1.forEach(x=>x.style.color="green");
+        }
+    </script>
+  </body>
+</html>

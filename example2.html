@@ -5,110 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-    <style>
-        body {
-            display:flex;
-            flex-direction: column;
-            /* justify-content: center; */
-            align-items: center;
-            height: 100vh;
-            background-image: linear-gradient(0deg, rgb(12, 15, 49) 30%, rgb(18, 124, 173) 80%);
-            margin:0px;
-            font-family: "Open Sans", sans-serif;
-            text-shadow: 2px 2px 4px black;
-        }
-        .filldiv,.emptydiv {
-            width:20px;
-            height: 20px;
-            border-radius: 50%;
-        }
-        .filldiv {
-            background-color: magenta;
-            transition: transform 1s ease;
-        }
-        .fillopacity {
-            opacity:0;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin:100px;
-            transition: transform 1s ease;
-            gap:10px;
-        }
 
-        .row {
-            display:flex;
-            justify-content: center;
-            align-items: center;
-            gap:10px;
-        }
+    <style>
+        
     </style>
 </head>
 <body>
-    <div>Current state: <div id="output">This is some sample text to see if the font has loaded. 123 456 789</div></div>
+
     
     <script>
         
-        // let output=document.querySelector("#output");
-        // document.body.addEventListener('click',updatestatus);
-        // function updatestatus() {
-        //     let curcontainer=document.body.querySelector(".container");
-        //     output.textContent=curcontainer.classList.contains("containeractive");
-        // }
-
-        function containerrotate(e) {e.currentTarget.style='transform:rotate(-90deg)';}
-        function containerrotatestop(e) {e.currentTarget.style='transform:rotate(0deg)';}          
-        function containerscale(e) {
-            if(e.currentTarget['isClicked']) {
-                e.currentTarget.addEventListener('mouseover', containerrotate);
-                e.currentTarget.addEventListener('mouseout', containerrotatestop);
-                e.currentTarget.style.transform='scale(1)';
-                e.currentTarget['isClicked']=false;
-            }
-            else {
-                e.currentTarget.style='transform:scale(2)';e.currentTarget.removeEventListener('mouseout',containerrotatestop);e.currentTarget.removeEventListener('mouseover',containerrotate);
-                e.currentTarget.style.transform+='rotate(-90deg)';
-                e.currentTarget['isClicked']=true;
-                e.currentTarget.querySelectorAll('.filldiv').forEach(e=>e.style.transform='scale(0.1)');
-            }
-            }   
-
-        function drawTriangle(n, fill=true) {
-            let container=document.createElement('div');
-            container.classList.add("container");
-            container['isClicked',false];
-            container.addEventListener('click', containerscale);
-            container.addEventListener('mouseover', containerrotate);
-            container.addEventListener('mouseout', containerrotatestop);
-            
-            for(let i=n;i>0;i--) {
-                
-                let string="";                
-                
-                let currentRow=document.createElement('div');
-                currentRow.classList.add('row');
-                for(let x=i;x>0;x--){
-                    let filldiv=document.createElement('div');
-                    filldiv.classList.add('filldiv');
-                    let emptydiv=document.createElement('div');
-                    emptydiv.classList.add('emptydiv');  
-                    if(fill)currentRow.appendChild(filldiv);
-                    else if(i===1)currentRow.appendChild(filldiv);
-                    else if(i===n && (x===i || x===1))currentRow.appendChild(filldiv);
-                    else currentRow.appendChild(emptydiv);                        
-                }
-                container.appendChild(currentRow);
-            }
-            document.body.append(container);
-        }
-        drawTriangle(2);
-        // drawTriangle(5, false);
     </script>
 </body>
 </html>
