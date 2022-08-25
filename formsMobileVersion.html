@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Examples</title>
+    <style>
+        body {
+            background-image: linear-gradient(rgb(126, 124, 124) 30%,rgb(185, 185, 185) 60%);
+            background-size:100% 4px;
+            margin:0;
+        }
+        form {
+            margin:0 auto;
+            width:max-content;
+            padding:1rem;
+            border:1px solid #CCC;
+            border-radius:10px;
+            background-color: rgb(226, 226, 226);
+            --inputWidth: calc(100vw / 2);    
+            height:auto;
+            display: flex;
+            flex-direction: column;
+            gap:1rem;
+        }
+        #explanation {
+            margin-left: 1rem;
+            background-color: rgba(128,128,128,0.2);
+            border-radius: 5px;
+            padding: 0 1rem;
+            width:max-content;
+        }
+        fieldset {
+            background-color: rgba(128,128,128,0.2);
+        }
+        ul {
+            list-style:none;
+            padding:0;
+            margin:0;
+        }
+        form li + li {
+            margin-top:1rem;
+        }
+        
+        label {
+            display:inline-block;
+            width:90px;
+            text-align: right;
+        }
+
+        .general input,textarea {
+            font:1em sans-serif;
+            width:var(--inputWidth);
+            max-width: 300px;
+            box-sizing: border-box;
+            border:1px solid #999;
+        }
+        .mydiv input:focus, textarea:focus {
+            outline-width: 0;
+            outline: 2px solid cyan;
+            border:1px solid transparent;                     
+        }
+
+        textarea {
+            vertical-align: top;
+            height:5em;
+            resize:vertical;
+        }
+        .button {
+            margin:1rem;
+            justify-content: center;
+            display:flex;
+        }
+        button {
+            font-size:x-large;
+            border-radius: 5px;
+            color:white;
+            background-color: rgb(0, 96, 255);
+            border:2px solid transparent;
+        }
+        button:hover {
+            border:2px solid black;
+        }
+        
+        .fruits {
+            display:flex;
+            flex-direction: column;
+            gap:0.5rem;
+        }
+        .fruits p {
+            display:flex;
+            justify-content: right;
+            gap:0.1rem;
+            margin:0;
+        }
+
+        .fruits input {
+            align-items:center;
+            margin-top:-1px;
+            margin-left:4rem;
+            max-width: min-content;
+        }
+        .fruits label {
+            text-align: left;
+            max-width: 100%;
+            flex:1;
+        }
+        
+
+    </style>
+  </head>
+  <body>
+    <form action="/my-handling-form-page" method="post">
+        <p id="explanation"> 
+            <!-- The use of 'aria-label' is intended for screen readers -->
+            Required fields are followed by <span aria-label="required">*</span>
+        </p>
+        <div class="mydiv">
+            <fieldset class="general">
+                <legend>General Information</legend>
+                <ul>
+                    <li>
+                        <!-- title is added to have a tooltip when hovered -->
+                        <label for="name">Name:<span aria-label="required" title="required">*</span></label>
+                        <input type="text" name="user_name" id="name">
+                    </li>
+                    <li>
+                        <label for="mail">Email: <span aria-label="required" title="required">*</span></label>
+                        <input type="email" name="user_email" id="mail">
+                    </li>
+                    <li>
+                        <label for="msg">Message:</label>
+                        <textarea name="user_message" id="msg" cols="30" rows="10" placeholder="Type your text here..."></textarea>
+                    </li>
+            
+                </ul>
+            </fieldset>            
+        </div>
+        <fieldset class="fruits">
+            <legend>Fruit Juice Size</legend>
+            <p>
+                <input type="radio" name="size" id="size_1" value="small">
+                <label for="size_1">Small</label>
+            </p>
+            <p>
+                <input type="radio" name="size" id="size_2" value="medium">
+                <label for="size_2">Medium</label>
+            </p>
+            <p>
+                <input type="radio" name="size" id="size_3" value="large">
+                <label for="size_3">Large</label>
+            </p>
+        </fieldset>
+        <div class="button">
+            <button type="submit" id="sendbtn">Submit</button>
+        </div>
+    </form>
+    
+
+    <script>
+        
+    </script>
+  </body>
+</html>

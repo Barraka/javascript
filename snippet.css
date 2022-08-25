@@ -114,5 +114,8 @@ Media queries:
 @media only screen and (orientation: portrait) {...}
 @media all and (min-device-aspect-ratio: 16/9) {...}
 
+//min-content is the smallest size a box can take without overflowing its content.
+
+
 
 

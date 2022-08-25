@@ -3,108 +3,156 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="author" content ="Me!">
-    <meta name="description" content="This web page is so cool">
     <script src="example.js" defer></script>
-
     <title>Examples</title>
     <style>
+        h1 {
+            margin-top: 0;
+        }
 
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        form {
+            margin: 0 auto;
+            width: 400px;
+            padding: 1em;
+            border: 1px solid #CCC;
+            border-radius: 1em;
+        }
+
+        div+div {
+            margin-top: 1em;
+        }
+
+        label span {
+            display: inline-block;
+            width: 120px;
+            text-align: right;
+        }
+
+        input, textarea {
+            font: 1em sans-serif;
+            width: 250px;
+            box-sizing: border-box;
+            border: 1px solid #999;
+        }
+
+        input[type=checkbox], input[type=radio] {
+            width: auto;
+            border: none;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #000;
+        }
+
+        textarea {
+            vertical-align: top;
+            height: 5em;
+            resize: vertical;
+        }
+
+        fieldset {
+            width: 250px;
+            box-sizing: border-box;
+            margin-left: 136px;
+            border: 1px solid #999;
+        }
+
+        button {
+            margin: 20px 0 0 124px;
+        }
+
+        label {
+        position: relative;
+        }
     </style>
-  </head>
-  <body>   
-    <form action="http://httpbin.org/post" method="post">
-        <fieldset>
-            <legend>General Information</legend>
-            <div>
-                <label for="first_name">First Name</label>
-                <input type="text" name="first_name" id="first_name">
-            </div>
-            <div>
-                <label for="age">Age:   </label>
-                <input type="number" name="age" id="age">
-            </div>
-            <div>
-                <label for="user_email">Email Address:</label>
-                <input type="email" id="user_email" name = "email" placeholder="your@email.example">
-            </div>
-            <div>
-                <label for="user_password">Password:</label>
-                <input type="password" id="user_password" name ="password">
-            </div>
-            <div>
-                <label for="dob">Date of Birth:</label>
-                <input type="date" id="dob" name="dob">
-            </div>
-            <div>
-                <textarea name="txt" id="txt" cols="30" rows="10">Some initial text...</textarea>
-            </div>
-        </fieldset>
-        <fieldset>
-            <legend>Car Details</legend>
-            <div>
-                <select name="car" id="car">
-                    <option value="mercedes" selected>Mercedes</option>
-                    <option value="tesla">Tesla</option>
-                    <option value="volvo">Volvo</option>
-                </select>
-            </div>
-            <div>
-                <select name="fashion" id="fashion">
-                    <optgroup label="Clothing">
-                        <option value="t_shirt">T-Shirts</option>
-                        <option value="sweater">Sweater</option>
-                        <option value="coats">coats</option>
-                    </optgroup>
-                    <optgroup label="Foot Wear">
-                        <option value="sneakers">Sneakers</option>
-                        <option value="boots">boots</option>
-                        <option value="sandals">sandals</option>
-                    </optgroup>
-                </select>
-        </fieldset>
-            <!-- Radio buttons: The 'value' attribute is used to know which item is selected -->
-            <fieldset>
-                <legend>Radio Buttons</legend>
-                <div>
-                    <input type="radio" id="child" name="ticket_type" value="child" checked>
-                    <label for="child">Child</label>
-                </div>
-                <div>
-                    <input type="radio" name="ticket_type" id="adult" value="adult">
-                    <label for="adult">Adult</label>
-                </div>
-                <div>
-                    <input type="radio" name="ticket_type" id="senior" value="senior">
-                    <label for="senior">Senior</label>
-                </div>
-            </fieldset>
-            <!-- Checkboxes -->
-            <fieldset>
-                <legend>Checkboxes</legend>
-                <div>
-                    <input type="checkbox" name="topping" id="dausage" value="sausage" checked>
-                    <label for="sausage">Sausage</label>
-                </div>
-                <div>
-                    <input type="checkbox" name="topping" id="onions" value="onions">
-                    <label for="onions">Onions</label>
-                </div>
-                <div>
-                    <input type="checkbox" name="topping" id="pepperoni" value="pepperoni">
-                    <label for="pepperoni">pepperoni</label>
-                </div>
-                <div>
-                    <input type="checkbox" name="news_letter" id="newsletter">
-                    <label for="newsletter" checked>Subscribe to the newsletter</label>
-                </div>
-            </fieldset>
-            
-        </div>
-        <!-- -------- -->
-        <button type="submit">Submit</button>
-        <button type="reset">Reset</button>
-    </form>
+    </head>
+    <body>
+        <form action="POST">
+            <h1>Payment form</h1>
+            <p>Required fields are followed by <strong><span aria-label="required">*</span></strong></p>
+            <section>
+                <h2>Contact information</h2>
+                <fieldset>
+                    <legend>Title</legend>
+                    <ul>
+                        <li>
+                            <label for="title_1">
+                                <input type="radio" name="title" id="title_1" value="K">King
+                            </label>
+                        </li>
+                        <li><label for="title_2">
+                            <input type="radio" name="title" id="title_2" value="Q">Queen
+                        </label></li>
+                        <li>
+                            <label for="title_3">
+                                <input type="radio" name="title" id="title_3" value="J">Joker
+                            </label>
+                        </li>
+                    </ul>
+                </fieldset>
+                <p>
+                    <label for="name">
+                        <span>Name:</span>
+                        <strong><span aria-label="required">*</span></strong>
+                    </label>
+                    <input type="text" name="username" id="name" placeholder="Heree...">
+                </p>
+                <p>
+                    <label for="mail">
+                        <span>E-mail:</span>
+                        <strong><span aria-label="required">*</span></strong>
+                    </label>
+                    <input type="email" name="usermail" id="mail">
+                </p>
+                <p>
+                    <label for="pwd">
+                        <span>Password: </span>
+                        <strong><span aria-label="required">*</span></strong>
+                    </label>
+                    <input type="password" name="password" id="pwd">
+                </p>
+            </section>
+            <section>
+                <h2>Payment information</h2>
+                <p>
+                    <label for="card">
+                        <span>Card type:</span>
+                    </label>
+                    <select name="usercard" id="card">
+                        <option value="visa">Visa</option>
+                        <option value="mc">Mastercard</option>
+                        <option value="amex">American Express</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="number">
+                        <span>Card number:</span>
+                        <strong><span aria-label="required">*</span></strong>
+                    </label>
+                    <input type="tel" name="cardnumber" id="number">
+                </p>
+                <p>
+                    <label for="expiration">
+                        <span>Expiration date:</span>
+                        <strong><span aria-label="required">*</span> </strong>
+                    </label>
+                    <input type="text" name="exp" id="expiration" required="true" placeholder="MM/YY" pattern="^(0[1-9]|1[0-2])\/([0-9]{2})$">
+                </p>
+            </section>
+            <section>
+                <p>
+                    <button type="submit">Validate the payment</button>
+                </p>
+            </section>
+
+        </form>
+    
 
     <script>
         
