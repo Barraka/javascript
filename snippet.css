@@ -81,6 +81,7 @@ input:invalid
 :fullscreen ; :modal ; :picture-in-picture ; :link ; :playing ; :root ; :nth-child ; 
 :active ; :focus; 
 input:enabled ; input:disabled ; input:checked
+.styledSelect:not(:focus-within) input:not(:checked) + label
 */
 
 /* pseudo-elements, used to style a specific part of the element: 

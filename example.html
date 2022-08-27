@@ -81,9 +81,14 @@
                 <fieldset>
                     <legend>Title</legend>
                     <ul>
+                        <p>
+                            <label for="comment">Add a comment here:</label>
+                            <input type="text" id="comment" name="comment" placeholder="Type here..." autofocus>
+                          </p>
                         <li>
-                            <label for="title_1">
-                                <input type="radio" name="title" id="title_1" value="K">King
+                            
+                                <input type="radio" name="title" id="title_1" value="K"><label for="title_1">King
+                                
                             </label>
                         </li>
                         <li><label for="title_2">
@@ -95,6 +100,7 @@
                             </label>
                         </li>
                     </ul>
+                    <input type="hidden" id="timestamp" name="timestamp" value="1286705410">
                 </fieldset>
                 <p>
                     <label for="name">
@@ -150,6 +156,7 @@
                     <button type="submit">Validate the payment</button>
                 </p>
             </section>
+            <input type="file" name="file" id="file" accept="*" multiple>
 
         </form>
     
