@@ -82,6 +82,8 @@ input:invalid
 :active ; :focus; 
 input:enabled ; input:disabled ; input:checked
 .styledSelect:not(:focus-within) input:not(:checked) + label
+With forms: 
+:invalid, :valid, :required
 */
 
 /* pseudo-elements, used to style a specific part of the element: 
