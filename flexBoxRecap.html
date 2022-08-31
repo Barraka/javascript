@@ -11,6 +11,22 @@
         /*
         We add display:flex to the container, in order to manipulate its items/children, which become flex items.
         justify-content: center ==> same without flex, with 'margin: 0 auto;' set on the container.
+
+        Flex-shrink only ends up being applied if the size of all flex items is larger than their parent container.
+        Use: 'flex:initial;' when you don't want a flex item to inherit from the parent's 'flex:1;' for example.
+
+        An important implication to notice here is that when you specify flex-grow or flex-shrink, flex items do not necessarily respect your given values for width.
+        Default= flex: 0 1 auto;
+        flex: [flex-grow] [flex-shrink] [flex-basis]; === flex: [max] [min] [ideal size];
+
+        To make the 3 child elements of a flex div grow, there are a few ways:
+        Set the width: 100% or set the flex-basis; 100% or flex-grow: 1;
+
+        Main axis & cross axis
+
+        Height: 100% is given to the parent
+
+        
         */
     </script>
 </body>

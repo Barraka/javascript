@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display:grid;
+            /* grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr; */
+            grid-template: 200px 100% 200% / 1fr 1fr;
+            /* align-content: stretch; */
+            /* Setting implicit rows for additional elements added later:
+            grid-auto-rows: 50px; 
+             */
+
+            /* 
+            Examples for gride-template-colums:
+            1fr 1fr
+            minmax(10px, 1fr) 3fr
+            repeat(5, 1fr)
+            50px auto 100px 1fr
+            */
+            /*
+            Examples for grid-template-rows:border: 
+            min-content 1fr min-content
+            100px 1fr max-content
+            */
+            /* It's possible to name the lines: */
+            /* grid-template-columns: [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end];
+            grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line]; */
+
+            /*
+            Properties for the children:
+            grid-column-start
+            grid-column-end
+            grid-row-start
+            grid-row-end
+
+            .item-a {
+            grid-column-start: 2;
+            grid-column-end: five;
+            grid-row-start: row1-start;
+            grid-row-end: 3;
+            }
+            .item-b {
+            grid-column-start: 1;
+            grid-column-end: span col4-start;
+            grid-row-start: 2;
+            grid-row-end: span 2;
+            }
+            Shorthand:border: grid-column & grid-row: 
+            grid-column: 3 / span 2;
+            grid-row: third-line / 4;
+
+            A shorthand of the shorthand, grid-area:
+            grid-area: header;
+            grid-area: 1 / col4-start / last-line / 6;
+
+            .container {
+            display: grid;
+            grid-template-columns: 50px 50px 50px 50px;
+            grid-template-rows: auto;
+            grid-template-areas: 
+                "header header header header"
+                "main main . sidebar"
+                "footer footer footer footer";
+            }
+
+            grid-area:1 /1 /2/4; == row start, col start, row end, col end
+            */
+
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+</html>
