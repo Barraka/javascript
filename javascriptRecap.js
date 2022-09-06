@@ -22,6 +22,44 @@ array.pop() ==> removes last. array.push("xyz") ==> adds to last position.
 array.join(" ") ==> returns a string of all elements.
 
 var myObj = {myKey: "myValue", "my other key": 4};
+2 ways to access object information: dot notation & bracket notation
+myobject.prop  /   myobject["other property"]
+
+Object Constructors:
+function Player (name, marker) {
+    this.name=name;
+    this.marker=marker;
+    this.sayName=funciton () {
+        console.log(name);
+    }
+}
+const player1=new Player('tim','X');
+You create a new object that has a constructor (function) with 'new'.
+You create a new object (without constructor) with Object.create() method.
+
+prototype attributes:
+let obj = new Object(); && let obj2 = {}; ==> the prototype attribute is Object.prototype.
+let user = new Person(); ==> prototype attribute (or prototype object) is Person.prototype.
+So, the prototype attribute of any object is the parent object.
+
+If a property is not found in the prototype chain, then undefined is returned. 
+=> protoypal inheritance
+
+__proto__ is a getter/setter for [[Prototype]] hidden property. (deprecated)
+Now, use Object.getPrototypeOf / Object.setPrototypeOf
+
+Looping through properties, inherited or not:
+for(let prop in rabbit) alert(prop);
+==> possible to filter with: rabbit.hasOwnProperty(prop);
+
+IIFE (immediately-invoked function expression):
+let message = function(){return "hello world"};
+
+car instanceof Vehicle // => true
+
+myFunc.call(arg1, arg2) || myFunc.apply(arg1,[other_args]). The second one takes an array as the 2nd argument.
+sum.apply(undefined, [10, 2]); ==> if only 2 args are required, the 'undefined' is skipped and the list takes the place of the other two.
+
 
 
 
