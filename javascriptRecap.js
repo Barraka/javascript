@@ -21,6 +21,7 @@ array.shift() ==> removes first element. array.unshift("abc") ==> creates a new 
 array.pop() ==> removes last. array.push("xyz") ==> adds to last position.
 array.join(" ") ==> returns a string of all elements.
 
+Using object initializer => literal notation:
 var myObj = {myKey: "myValue", "my other key": 4};
 2 ways to access object information: dot notation & bracket notation
 myobject.prop  /   myobject["other property"]
@@ -58,9 +59,33 @@ let message = function(){return "hello world"};
 car instanceof Vehicle // => true
 
 myFunc.call(arg1, arg2) || myFunc.apply(arg1,[other_args]). The second one takes an array as the 2nd argument.
-sum.apply(undefined, [10, 2]); ==> if only 2 args are required, the 'undefined' is skipped and the list takes the place of the other two.
+sum.apply(undefined, [10, 2]); ==> first argument is the context of the invocation
 
+const boundGetNumbers = numbers.getNumbers.bind(numbers);
+const double = multiply.bind(2);
 
+When an arrow function has only 1 statement, you can omit the 'return' keyword.
 
+An object is a collection of properties and methods. A property is an association between a key-value pair.
+If the property's value is a function, it is called a method.
+Those properties are just like variables, only attached to an object. 
+Objects are sometimes called associative arrays.
+
+2 ways to define an object method:
+let myobj = {
+    mymethod: function(p) {...}
+    myothermethod(p1) {...}
+
+Using getters & setters:
+const myObj = {
+  a: 7,
+  get b() {return this.a + 1;},   
+  set c(x) {this.a = x / 2;}
+};
+Getters and setters can also be added later using the 'defineProperties' syntax:
+Object.defineProperties(myObj, {
+  b: { get() { return this.a + 1; } },
+  c: { set(x) { this.a = x / 2; } },
+});
 
 */
