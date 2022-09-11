@@ -88,4 +88,39 @@ Object.defineProperties(myObj, {
   c: { set(x) { this.a = x / 2; } },
 });
 
+Factory functions:
+let myfac = (name,age) => {
+    let sayHello = () => console.log('hello');
+    return {name, age, sayhello);};
+
+Base scope in js is 'window'. A global variable in a js file can be accessed by window.myvariable
+Scope can be either global or local
+namespace usually refers to the highest level scope
+Lexical scope (closure) - outer variables can be accessed within nested functions, i.e. climbing up the scope chain
+Scope chain - when resolving a variable, javascript starts at the innermost scope and searches outwards.
+Closure - created when accessing avraibles outside of the immediate lexical scope
+We can change scope with .call(), .apply() and .bind()
+==> function.call(scopeWanted) or function.apply(scopeWanted)
+The only difference is with optional arguments: .call(scope, arg1, arg2)  => .apply(scope, [arg1, arg2])
+function.bind(scope) does not invoke the function
+
+
+public a private scope: Doesn't exist, but can be emulated through closures.
+A simple way is by wrapping a function inside another function
+
+The 'var' keyword is only function-scoped (or global-scoped), so a var in an 'if' statement, is actually scoped outside, which can be the global scope in a js file.
+The lat & const keywords are block-scoped, inside any {} and will not be visible outside that block.
+
+Closures:
+A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment).
+A closure gives you access to an outer function's scope from an inner function.
+In JavaScript, closures are created every time a function is created, at function creation time.
+
+
+Lexical scoping => a nested function can have access to its parent function variables.
+The word lexical refers to the fact that lexical scoping uses the location where a variable is declared within the source code to determine where that variable is available
+
+Functions in javascript form closures. A closure is the combination of a function and the lexical environmment within which that function was declared.
+Closures can also be used to emulate private variables & provide a way of managing the global namespace.
+
 */
