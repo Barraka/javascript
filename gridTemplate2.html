@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Something something</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body {
+            margin :0;
+            background-color: gray;
+            height: 100vh;
+        }       
+        :root {
+            --box:150px;
+        }
+        .container {
+        display: inline-grid;
+        grid-template: var(--box) var(--box) var(--box) var(--box) var(--box) / var(--box) var(--box) var(--box) var(--box) var(--box);
+        background-color: lightblue;
+        }
+        .room {
+        border: 1px solid;
+        /* font-size: 50%; */
+        text-align: center;
+        }
+
+        #living-room {        
+            grid-area: 1/1/3/6;
+        }
+        #closet {
+            grid-area: 5/2/6/4;
+        }
+        #bathroom {
+            grid-area: 3/1/6/2;
+        }
+        #bedroom {
+            grid-area: 3/2/5/4;
+        }
+        #kitchen {
+            grid-area: 3/4/6/6;
+        }
+    </style>
+  </head>
+
+<body>
+    <div class="container">
+        <div class="room" id="living-room">Living Room</div>
+        <div class="room" id="kitchen">Kitchen</div>
+        <div class="room" id="bedroom">Bedroom</div>
+        <div class="room" id="bathroom">Bathroom</div>
+        <div class="room" id="closet">Closet</div>
+    </div>
+
+    <script>        
+        
+    </script>
+</body>
+
+</html>

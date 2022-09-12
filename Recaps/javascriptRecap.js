@@ -53,8 +53,6 @@ Looping through properties, inherited or not:
 for(let prop in rabbit) alert(prop);
 ==> possible to filter with: rabbit.hasOwnProperty(prop);
 
-IIFE (immediately-invoked function expression):
-let message = function(){return "hello world"};
 
 car instanceof Vehicle // => true
 
@@ -89,6 +87,7 @@ Object.defineProperties(myObj, {
 });
 
 Factory functions:
+They are simply functions that return objects for us to use in out code:
 let myfac = (name,age) => {
     let sayHello = () => console.log('hello');
     return {name, age, sayhello);};
@@ -111,7 +110,7 @@ A simple way is by wrapping a function inside another function
 The 'var' keyword is only function-scoped (or global-scoped), so a var in an 'if' statement, is actually scoped outside, which can be the global scope in a js file.
 The lat & const keywords are block-scoped, inside any {} and will not be visible outside that block.
 
-Closures:
+Closures: (= nested functions / block scopes / modules. Functions retain their scope even if they are passed around and called outside of that scope.)
 A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment).
 A closure gives you access to an outer function's scope from an inner function.
 In JavaScript, closures are created every time a function is created, at function creation time.
@@ -122,5 +121,17 @@ The word lexical refers to the fact that lexical scoping uses the location where
 
 Functions in javascript form closures. A closure is the combination of a function and the lexical environmment within which that function was declared.
 Closures can also be used to emulate private variables & provide a way of managing the global namespace.
+Closures have 3 scopes: its own; enclosing scope(s); global scope.
+
+Privileged methods are methods defined within a function's scope, that have access to the private data
+
+IIFE - Immediately invoked function expression:
+let myfuncresult = (function() {
+    let foo='bar';
+    return{foo};
+})()
+
+A useful side-effect of encapsulating the inner workings of our program into objects is 'namespacing'. Namespacing is a technique that is used to avoid naming collisions in our programs.
+
 
 */

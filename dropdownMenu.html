@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Examples</title>
+    <style>
+        .select {
+            position:relative;
+            display: inline-block;
+
+            font-size:0.625em;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            box-sizing: border-box;
+            padding:.1em 2.5em .2em .5em;
+            width: 10em;
+            border:.2em solid #000;
+            border-radius: .4em;
+            box-shadow: 0 .1em .2em rgba(0,0,0,.45);
+            background: #F0F0F0;
+            background: linear-gradient(0deg, #E3E3E3, #FCFCFC 50%, #F0F0F0)
+        }
+        .select.active,.select.focus {
+            outline: none;
+            box-shadow: 0 0 3px 1px #227755;
+        }
+        .select .optList {
+            position:absolute;
+            top: 100%;
+            left:0;
+        }
+        .select .optList.hidden {
+            max-height: 0;
+            visibility:hidden;
+        }
+        .select .value {
+            display: inline-block;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow:ellipsis;
+            vertical-align: top;
+        }
+        .select:after {
+            content: "▼";
+            position: absolute;
+            z-index: 1;
+            top:0;
+            right:0;
+            box-sizing: border-box;
+            height:100%;
+            width: 2em;
+            padding-top:.1em;
+            border-left:.2em solid #000;
+            border-radius: 0 .1em .1em 0;
+            background-color: #000;
+            color:#FFF;
+            text-align:center;
+        }
+        .select .optList {
+            z-index:2;
+            list-style:none;
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+            min-width: 100%;
+            max-height: 10em;
+            overflow-y: auto;
+            overflow-x: hidden;
+            border: .2em solid #000;
+            border-top-width: .1em;
+            border-radius: 0 0 .4em .4em;
+            box-shadow: 0 .2em .4em rgba (0,0,0, .4);
+            background:#F0F0F0;
+        }
+        .select .option {
+            padding: .2em .3em;
+        }
+        .select .highlight {
+            background: #000;
+            color:#FFF;
+        }
+        .widget select, .no-widget .select {
+            /* This CSS visually hides one of the elements, but it is still available to screen readers. */
+            position: absolute;
+            left:-5000em;
+            height: 0;
+            overflow:hidden;
+        }
+        
+    </style>
+    </head>
+    <body class="no-widget">
+        <form>
+            <select name="myFruit" id="myfruit">
+                <option value="cherry">Cherry</option>
+                <option value="lemon">Lemon</option>
+                <option value="banana">Banana</option>
+                <option value="strawberry">Strawberry</option>
+                <option value="apple">Apple</option>
+            </select>
+
+            <div class="select" tabindex=0 role="listbox">
+                <span class="value">Cherry</span>
+                <ul class="optList hidden" role="presentation">
+                    <li class="option" role="option">Cherry</li>
+                    <li class="option" role="option">Lemon</li>
+                    <li class="option" role="option">Banana</li>
+                    <li class="option" role="option">Strawberry</li>
+                    <li class="option" role="option">Apple</li>
+                </ul>
+            </div>
+        </form>
+    <script>
+        window.addEventListener("load",()=> {
+            document.body.classList.remove("no-widget");
+            document.body.classList.add("widget");
+        });
+        function deactivate(select) {
+            if(!select.classList.contains('active')) return;
+            let optList=select.querySelector('.optList');
+            optList.classList.add('hidden');
+            select.classList.remove('active');
+        }
+        function activate(select, selectList) {
+            if(select.classList.contains('active')) return;
+            selectList.forEach(deactivate);
+            select.classList.add('active');
+        }
+        function toggle(select) {
+            let optList = select.querySelector('.optList');
+            optList.classList.toggle('hidden');
+        }
+        function highlight(select,option) {
+            let optionlist = select.querySelectorAll('.option');
+            optionlist.forEach((other)=> {
+                other.classList.remove('highlight');
+            });
+            option.classList.add('highlight');
+        }
+        window.addEventListener("load", () => {
+            let selectList = document.querySelectorAll('.select');
+            selectList.forEach((select) => {
+                let optionlist = select.querySelectorAll('.option');
+                optionlist.forEach((option) => {
+                    option.addEventListener('mouseover', () => {
+                        highlight(select,option);
+                    });
+                });
+                select.addEventListener('click', (e) => {
+                    toggle(select);
+                });
+                select.addEventListener('focus', (e)=> {
+                    activate(select,selectList);
+                });
+                select.addEventListener('blur',(e) => {
+                    deactivate(select);
+                });
+                select.addEventListener('keyup', (e) => {
+                    if(e.key==="Escape") deactivate(select);
+                });
+            });
+        });
+        function update(select, index) {
+            let native=select.previousElementSibling;
+            let value = select.querySelector(".value");
+            let optionList = select.querySelectorAll('.option');
+            native.selectedIndex = index;
+            value.innerHTML= optionList[index].innerHTML;
+            highlight(select, optionList[index]);
+        }
+        function getindex(select) {
+            let native = select.previousElementSibling;
+            return native.selectedIndex;
+        }
+        window.addEventListener('load', () => {
+            let selectList = document.querySelectorAll(".select");
+            selectList.forEach((select) => {
+                let optionList = select.querySelectorAll('.option');
+                let selectedIndex = getindex(select);
+                select.tabIndex=0;
+                select.previousElementSibling.tabIndex=-1;
+                update(select,selectedIndex);
+                optionList.forEach((option, index) => {
+                    option.addEventListener('click',(e)=> {
+                        update(select, index);
+                    });
+                });
+                select.addEventListener('keyup', (e) => {
+                    let index = getindex(select);
+                    if(e.key==="ArrowDown" && iindex < optionList.length-1) {
+                        index++;
+                    }
+                    update(select,index);
+                });
+            });
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Something something</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body {
+            margin :0;
+            background-color: gray;
+            height: 100vh;
+        }     
+        :root {
+            --box:150px;
+        }  
+        .grid {
+        display: grid;
+        gap: 1rem;
+        /* Don't specify the number of columns, the grid will adjust according to number of child elements: */
+        grid-auto-flow: column;
+        grid-template-rows: 200px;
+        margin: 0 0 1rem 0;
+        }
+
+        .grid > div {
+        background: red;
+        min-width: 10px;
+        }
+
+        body {
+        margin: 1rem;
+        }
+        #other {
+            grid-template-rows: 300px;
+        }
+        #other div {
+            background-color: aquamarine;
+        }
+
+    </style>
+  </head>
+
+<body>
+    <div class="grid">
+        <div></div>
+        <div></div>
+      </div>
+      
+      <div class="grid" id="other">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      
+      <div class="grid">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+
+    <script>        
+        
+    </script>
+</body>
+
+</html>

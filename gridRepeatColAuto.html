@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Something something</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body {
+            margin :0;
+            background-color: gray;
+            height: 100vh;
+        }     
+        :root {
+            --box:150px;
+        }  
+        .grid {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        
+        /* Another example: 
+        grid-template-columns: repeat(auto-fill, minmax(min(10rem, 100%), 1fr));
+        That’s saying that if 100% width calculates to less than 10rem (otherwise the minimum), then use that instead, making it safer for small-screen layouts. */
+        }
+
+        .grid > div {
+        height: 300px;
+        background: red;
+        }
+
+        body {
+        margin: 1rem;
+        }
+    </style>
+  </head>
+
+<body>
+    <div class="grid">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <script>        
+        
+    </script>
+</body>
+
+</html>

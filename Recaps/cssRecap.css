@@ -72,7 +72,11 @@ a[href*="example"]
 a[title]
 a[class~="logo"] => <a> elements whose class attribute contains the word "logo"
 
-
+----Vertical align radio button && CSS selector
+input[type="radio"] {
+    margin-top: -1px;
+    vertical-align: middle;
+}
 
 /* pseudo-classes: 
 mybutton:hover

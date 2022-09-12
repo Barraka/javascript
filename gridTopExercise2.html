@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Something something</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body {
+            margin :0;
+            background-color: gray;
+            height: 100vh;
+        }     
+        :root {
+            --box:75px;
+        } 
+        /* ---------------------------------- */
+        * {
+        margin: 0;
+        padding: 0;
+        }
+
+        .container {
+        text-align: center;
+        }
+
+        .container div {
+        padding: 15px;
+        font-size: 32px;
+        font-family: Helvetica;
+        font-weight: bold;
+        color: white;
+        }
+
+        .header {
+        background-color: #393f4d;
+        }
+
+        .menu ul,
+        .menu li {
+        font-size: 16px;
+        }
+
+        .sidebar {
+        background-color: #FF7755;
+        }
+
+        .sidebar .photo {
+        background-color: white;
+        color: black;
+        font-size: 12px;
+        font-weight: normal;
+        border-radius: 10px;
+        }
+
+
+        .sidebar .side-content {
+        background-color: white;
+        color: black;
+        font-size: 16px;
+        font-weight: normal;
+        }
+
+        .nav {
+        background-color: #FF7755;
+        }
+
+        .nav ul li {
+        font-size: 16px;
+        text-transform: uppercase;
+        }
+
+        .article {
+        background-color: #bccbde;
+        }
+
+        .article p {
+        font-size: 18px;
+        font-family: sans-serif;
+        color: white;
+        text-align: left;
+        }
+
+        .article .card {
+        background-color: #FFFFFF;
+        color: black;
+        text-align: center;
+        }
+
+        .card p {
+        color: black;
+        font-weight: normal;
+        font-size: 14px;
+        }
+
+        .card .title {
+        font-size: 18px;
+        text-align: center;
+        }
+
+        .footer {
+        background-color: #393f4d;
+        }
+
+        .footer p {
+        font-size: 13px;
+        font-weight: normal;  
+        }
+        /* ------- solution -------- */
+        .container {
+            display:grid;
+            grid-template-columns: 1fr 4fr;
+            gap:4px;
+            resize:both;
+            overflow: auto;
+        }
+        .header {
+            grid-column: 1 / 3;
+            display:grid;
+            grid-template-columns: 1fr 4fr;
+        }
+        .sidebar {
+            grid-area: 2/1/ 4 /2;
+            /* also: grid-row: 2 / 4; */
+        }
+        /* .nav {
+            grid-area: 2/2/3/3;
+        } */
+        .article {
+            grid-area: 3/2/4/3;
+        }
+        .footer {
+            grid-area: 4/1/5/3;
+        }
+        .logo {
+            grid-area: 1/1/2/2;
+        }
+        .menu {
+            grid-area: 1/2/2/3;
+        }
+        .menu ul {
+            display:grid;
+            grid-template-columns: repeat(4,20%);
+            list-style-type: none;
+            justify-content: end;
+        }
+        .sidebar {
+            display:grid;
+            gap:50px;
+            /* grid-template: repeat(4,1fr) / 1fr; */
+            /* grid-template-rows: repeat(auto-fit, minmax(min-content,1fr)); */
+        }
+        .sidebar >* {
+            display:grid;
+            align-items: center;
+        }
+
+        .nav ul {
+            list-style-type: none;
+            display:grid;
+            grid-template-columns: repeat (3,1fr);
+            grid-auto-flow: column;            
+        }
+        .article {
+            display:grid;
+            grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+            gap:15px;
+        }
+        .card {
+            height:200px;
+        }
+        .card p {
+            padding: 5px;
+        }
+
+
+    </style>
+  </head>
+
+<body>
+    <div class="container">
+
+        <div class="header">
+          <div class="logo">Header Logo</div>
+          <div class="menu">
+            <ul>
+              <li>header link one</li>
+              <li>header link two</li>
+              <li>header link three</li>
+              <li>header link four</li>
+            </ul>
+          </div>
+        </div>
+  
+        <div class="sidebar">
+          <div class="photo">
+            <p>placeholder for image</p>    
+          </div>
+          <div class="side-content">Box 1
+          </div>
+          <div class="side-content">Box 2
+          </div>
+          <div class="side-content">Box 3
+          </div>
+        </div>
+  
+        <div class="nav">
+          <ul>
+            <li>Latest Articles</li>
+            <li>Most Views</li>
+            <li>Featured</li>
+          </ul>
+        </div>
+  
+        <div class="article">
+          <div class="card">
+            <p class="title">Article Title</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud...</p>
+          </div>
+          <div class="card">
+            <p class="title">Article Title</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud...</p>
+          </div>
+          <div class="card">
+            <p class="title">Article Title</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud...</p>
+          </div>
+          <div class="card">
+            <p class="title">Article Title</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud...</p>
+          </div>
+          <div class="card">
+            <p class="title">Article Title</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud...</p>
+          </div>
+          <div class="card">
+            <p class="title">Article Title</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud...</p>
+          </div>
+          <div class="card">
+            <p class="title">Article Title</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud...</p>
+          </div>
+          <div class="card">
+            <p class="title">Article Title</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud...</p>
+          </div>
+          <div class="card">
+            <p class="title">Article Title</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud...</p>
+          </div>
+          <div class="card">
+            <p class="title">Article Title</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud...</p>
+          </div>
+          <div class="card">
+            <p class="title">Article Title</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud...</p>
+          </div>
+          <div class="card">
+            <p class="title">Article Title</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud...</p>
+          </div>
+        </div>
+  
+        <div class="footer">
+          <p>Copyright © The Odin Project 2021
+        </div>
+        
+    </div>
+    <script>        
+        
+    </script>
+</body>
+
+</html>

@@ -8,10 +8,16 @@
     <style>
         body {
             margin: 0px;
+            background-size:100% 4px
+            /* Old way
             background:linear-gradient(rgb(94, 83, 83) 50%,rgb(26, 23, 23) 50%);
-            background-size:100% 4px;
-            /* background: repeating-linear-gradient(to bottom,blue,blue 10px,red 5px, red 15px); */
-            /* background-size: 100vw 100vh; */
+            background-size:100% 4px; */
+            /* New way, but size changes with content so not cool:
+            background: repeating-linear-gradient(rgb(179, 179, 179), rgb(179, 179, 179) 4px, rgb(83, 83, 83) 4px, rgb(83, 83, 83) 8px);   */
+
+            /* New new way, sticking with background-image, and 2 methods having the same outcome:
+            background-image: linear-gradient(rgb(126, 124, 124) 50%,rgb(185, 185, 185) 50%);
+            background-image: repeating-linear-gradient(rgb(126, 124, 124), rgb(126, 124, 124) 2px, rgb(185, 185, 185) 2px, rgb(185, 185, 185) 4px); */
         }
     </style>
 </head>

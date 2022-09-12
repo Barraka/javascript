@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Something something</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body {
+            margin :0;
+            background-color: gray;
+            height: 100vh;
+        }     
+        :root {
+            --box:75px;
+        } 
+        /* ---------------------------------- */
+        .layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 8px;
+        resize: both;
+        overflow: auto;
+        height: 100vh;
+        }
+        .child {
+        background: orange;
+        text-align: center;
+        padding: 25px;
+        display: flex;
+        justify-content: space-between;
+        gap:10px;
+        }
+        .last-row {
+        grid-column: 1 / 3;
+        }
+        .child > div {
+        background: darkred;
+        flex:1;
+        }
+
+    </style>
+  </head>
+
+<body>
+    <div class="layout">
+        <div class="child">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div class="child">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div class="child last-row">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+    </div>
+    <script>        
+        
+    </script>
+</body>
+
+</html>

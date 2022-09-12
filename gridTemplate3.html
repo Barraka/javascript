@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Something something</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body {
+            margin :0;
+            background-color: gray;
+            height: 100vh;
+        }       
+        :root {
+            --box:150px;
+        }
+        
+        .container {
+        display: grid;
+        grid-template: var(--box) var(--box) var(--box) var(--box) var(--box) / var(--box) var(--box) var(--box) var(--box) var(--box);
+        background-color: lightblue; 
+        width:fit-content;
+        grid-template-areas:
+            "living-room living-room living-room living-room living-room"
+            "living-room living-room living-room living-room living-room"
+            "bedroom bedroom bathroom kitchen kitchen"
+            "bedroom bedroom bathroom kitchen kitchen"
+            "closet closet . kitchen kitchen"  ; 
+        resize:both;
+        overflow: auto;
+
+        }
+
+        .room {
+        border: 1px solid;
+        font-size: 150%;
+        text-align: center;
+        }
+
+        #living-room {
+        grid-area:  living-room;
+        }
+
+        #kitchen {
+        grid-area: kitchen;
+        }
+
+        #bedroom {
+        grid-area: bedroom;
+        }
+
+        #bathroom {
+        grid-area: bathroom;
+        }
+
+        #closet {
+        grid-area: closet;
+        }
+    </style>
+  </head>
+
+<body>
+    <div class="container">
+        <div class="room" id="living-room">Living Room</div>
+        <div class="room" id="kitchen">Kitchen</div>
+        <div class="room" id="bedroom">Bedroom</div>
+        <div class="room" id="bathroom">Bathroom</div>
+        <div class="room" id="closet">Closet</div>
+    </div>
+
+    <script>        
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Examples</title>
+    <style>
+        body {
+            background-color: black;
+        }
+        canvas {
+            border:1px solid black;
+        }
+        #first {
+            width:50px;
+            height:50px;
+            background-color: red;
+            
+        }
+        #second {
+            width:50px;
+            height: 50px;
+            background-color: blue;
+            position:absolute;
+            left:60px;
+        }
+        #third {
+            width:50px;
+            height: 50px;
+            background-color: green;
+            position:absolute;
+            left:calc(60px + 60px);
+        }
+        .container {
+            position:relative;
+            display: flex;
+        }
+        #circle1, #circle2 {
+            width:10px;
+            height:10px;
+            border-radius:50%;
+            position:absolute;
+            outline:1px solid orange;
+        }
+        #circle1 {
+            top: 25px;
+            left:25px;
+            transform:translate(-50%,-50%);
+        }
+        #circle2 {
+            top:20px;
+            left:80px;
+        }
+        .square {
+            background-color: aqua;            
+        }
+        .square::before {
+            content: "";
+            display: block;
+            width:20px;
+            height: 20px;
+            background-color: green;
+            border-radius: 50%;
+            position:absolute;
+            transition: transform 0.25s ease-in;
+            animation: move ease 1s;
+            animation-iteration-count: 1;
+
+        }
+        .square:active::before {   
+            content: "";
+            display: block;
+            width:20px;
+            height: 20px;
+            background-color: green;
+            border-radius: 50%;
+            position:absolute;
+            transform: translate(15px, 15px) ;
+            transition: transform 0.25s ease-in;
+        }
+        @keyframes move {
+            0% {transform: translate(0px,0px);}
+            100%{transform: translate(15px,15px);}
+        }
+        .circle {
+            background-color: orange;
+        }
+    </style>
+    </head>
+    <body>
+        <canvas id="myCanvas" width="160" height="100">Your browser does not support the canvas tag</canvas>
+        <div class="container">
+            <div id="first"></div>
+            <div id="second"></div>
+            <div id="third"></div>
+            <div id="circle1"></div>
+            <div id="circle2"></div>
+        </div>
+        
+        
+    <script>
+        let c=document.querySelector("#myCanvas");
+        let ctx= c.getContext("2d");
+        ctx.beginPath();
+        ctx.rect(50,50,50,50);
+        ctx.stroke();
+        //----
+        ctx.beginPath();
+        ctx.rect(110,50,50,50);
+        ctx.stroke();
+        //----
+        let circle1=new Path2D();
+        let circle2 = new Path2D();
+        circle1.arc(75,75,10,0,Math.PI*2,true);
+        circle2.arc(135,75,10,0,Math.PI*2,true);
+        ctx.stroke(circle1);   
+        ctx.stroke(circle2);
+
+        function drawShape(n, size, step,cSize) {
+            let container=document.createElement('div');
+            for(let x=1;x<=n;x++) {                
+                let shape=document.createElement('div');
+                container.style.position="relative";
+                shape.classList.add('square');
+                shape.id="square"+x;
+                shape.style.position="absolute";
+                shape.style.width=size+'px';
+                shape.style.height=size+'px';
+                shape.style.left=((x-1)*size+step*(x-1))+'px';
+                container.appendChild(shape);
+                //----Circles
+                let circle=document.createElement('div');
+                circle.style.position="relative";
+                circle.classList.add('circle');
+                circle.id="cicle"+x;
+                circle.style.position="absolute";
+                circle.style.width=cSize+'px';
+                circle.style.height=cSize+'px';
+                circle.style.borderRadius='50%';
+                circle.style.left=((x-1)*size+step*(x-1))+(size/2)-(cSize/2)+'px';
+                circle.style.top=(size/2)-(cSize/2)+'px';
+
+                container.appendChild(circle);        
+
+            }
+            document.body.appendChild(container);
+        }
+        drawShape(5,50,10,10);
+
+        function commonDivisor(x,y) {
+            let start=Math.min(x,y);
+            for(start;start>0;start--) {
+                if(x%start===0 && y%start===0)return start;
+            }
+            return 0;
+        }
+        // console.log(commonDivisor(5,15));
+        function kids(kids,toys,pos) {
+            let remainder=(toys/kids)%1;
+            let shift=remainder*kids;
+            let final=pos+shift-1;
+            if(final>kids)return final-kids;
+            return final;
+        }
+        // console.log(kids(3,5,1));
+    </script>
+  </body>
+</html>

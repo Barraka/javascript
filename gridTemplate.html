@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Something something</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body {
+            margin :0;
+            background-color: gray;
+            height: 100vh;
+        }
+        .outer {
+            display:grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows: 200px;
+            height:100%;
+        }
+        .header {
+            grid-area:1 /1 /2/4;  
+            background-color: orange; 
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+        }
+        .list {
+            background-color: antiquewhite;
+        }
+        .two {
+            grid-area:2/1/4/2;
+            background-color: yellow;
+            height:100%;
+        }
+        .three {
+            grid-area:2/2/3/3;
+            background-color: rgb(73, 46, 72);
+        }
+        .four {
+            grid-area:2/3/3/4;
+            background-color: aquamarine;
+        }
+        .five {
+            grid-area:3/2/4/3;
+            background-color: rgb(89, 13, 133);
+        }
+        .outer div {
+            border: 1px solid brown;
+        }
+        
+
+        
+    </style>
+  </head>
+
+<body>
+    <div class="outer">
+        <div class="header">
+            <div class="list">a</div>
+            <div class="list">b</div>
+            <div class="list">c</div>
+        </div>
+        <div class="two">Two</div>
+        <div class="three">Three</div>
+        <div class="four">Four</div>
+        <div class="five">Five</div>
+    </div>
+
+    <script>        
+        
+    </script>
+</body>
+
+</html>
