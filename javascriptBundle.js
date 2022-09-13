@@ -239,11 +239,28 @@ const Formatter = (function() {
       setTimesRun();
       return text.toUpperCase();
     };
-      let gettime =()=> {return timesRun};
+    let gettime =()=> {return timesRun};
+    // ----------------------
     return {
       makeUppercase,gettime
     }
   })();
 
 
-  
+  // The traditional module pattern, with public & private variables:
+  let gameboard = (function () {
+    let publicvar=5;
+    let privatevar1=0;
+    let privatevar2=0;
+    let privatemethod= function(foo){
+        return 'bar';
+    }
+
+    // ----- private vars above this line -----
+    return {
+        publicvar,
+        publicmethod:function(bar){
+            //stuff using private variables
+        }
+    };
+})();
