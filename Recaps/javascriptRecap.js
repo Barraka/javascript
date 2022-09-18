@@ -133,5 +133,24 @@ let myfuncresult = (function() {
 
 A useful side-effect of encapsulating the inner workings of our program into objects is 'namespacing'. Namespacing is a technique that is used to avoid naming collisions in our programs.
 
+2 kinds of object properties:
+- Data properties
+- Accessor porperties (getters & setters)
+
+A class is an extensible program-code template for creating objects, providing initial values for state (variables) and implementation of behavior (methods).
+
+Classes are great when you need to create many objects of the same kind. Basic syntax:
+class MyClass {
+    constructor() {...}
+    method1(){...}
+    method2(){...}
+}
+Then, num MyClass() to create each object. Contructor is automatically called by new()
+A few differences with a constructor function: has an internal property 'IsClassConstructor'. Must be called with 'new' keyword.
+All code inside the class construct is automatically in strict mode.
+
+Static keyword defines a property or method that will not be attached to object instances.
+Instance properties must be defined inside of class methods (e.g. in constructor method)
+
 
 */
