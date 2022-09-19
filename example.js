@@ -1,16 +1,18 @@
-function Animal() { }
+class baseclass {
+    constructor(name, age){
+        this.name;
+        this.age;
+        this.town;
+    }
+    set setTown(t){
+        this.town=town;
+        console.log('town');
+    }
+    otherset(t) {
+        this.town=town;
+    }
+    get getTown(){
+        return this;
+    }}
 
-Animal.prototype.speak = function () {
-  return this;
-}
-
-Animal.eat = function () {
-  return this;
-}
-
-const obj = new Animal();
-const speak = obj.speak;
-speak(); // global object (in non–strict mode)
-
-const eat = Animal.eat;
-eat(); 
+let dog=new baseclass('my dog', 23);

@@ -96,3 +96,42 @@ Rectangle = class Rectangle2 {
       return Math.hypot(dx, dy);
     }}
 
+//Private field declarations
+class Rectangle {
+    #height = 0;
+    #width;
+    constructor(height, width) {
+      this.#height = height;
+      this.#width = width;
+    }}
+
+//Using super():
+class Base {
+    constructor() {
+      console.log('Base constructor:', this.field);
+    }}  
+class Derived extends Base {
+    field = 1;
+    constructor() {
+        super();
+        console.log('Derived constructor:', this.field);
+    }}
+const instance = new Derived();// Base constructor: undefined // Derived constructor: 1
+
+//Another super () example with arguments:
+class Animal {
+    constructor(name) {
+      this.name = name;
+    }  
+    speak() {
+      console.log(`${this.name} makes a noise.`);
+    }}  
+class Dog extends Animal {
+    constructor(name) {
+      super(name); // call the super class constructor and pass in the name parameter
+    }  
+    speak() {
+      console.log(`${this.name} barks.`);
+}}  
+const d = new Dog('Mitzie');
+d.speak(); // Mitzie barks.

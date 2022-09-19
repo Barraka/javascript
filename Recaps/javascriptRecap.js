@@ -152,5 +152,8 @@ All code inside the class construct is automatically in strict mode.
 Static keyword defines a property or method that will not be attached to object instances.
 Instance properties must be defined inside of class methods (e.g. in constructor method)
 
+Mix-ins = abstract subclasses
+
+npm - Node package manager
 
 */
