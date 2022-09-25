@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="index.js" defer></script>
+    <style>
+body {
+    background-color: #2b3a42
+}
+* {
+    box-sizing: border-box
+}
+
+.cube__container {
+    margin: 200px auto;
+    width:180px;height:180px;
+    transform-style: preserve-3d;
+    transform: rotateX(-33.5deg)rotateY(45deg);
+}
+.cube__inner,.cube__outer {
+    transform-style: preserve-3d;
+    transition: all 1s;
+    display: inline-block;    
+}
+.cube__inner {
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 120px;
+    height: 120px;
+    transform: scale3d(0.5, 0.5, 0.5) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+}
+.cube__face {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #fff;
+    position: absolute
+}
+.cube__outer .cube__face {
+    background: #8dd6f980;
+    transition: border-width ease 0.3s;
+}
+.cube__outer {
+    width: 120px;
+    height: 120px;
+    transform:  scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+}
+#face1 {
+    transform:rotateX(0deg) translateZ(60px);
+    border-width: 1px 6px 6px 1px;
+}
+#face2 {
+    transform:rotateX(-90deg) translateZ(60px);
+    border-width: 1px;
+}
+#face3 {
+    transform: rotateX(90deg) translateZ(60px);
+    border-width: 6px 6px 1px 1px;
+}
+#face4 {
+    transform:rotateY(-90deg) translateZ(60px);
+    border-width: 1px 1px 6px 6px;
+}
+#face5 {
+    transform:rotateY(90deg) translateZ(60px);
+    border-width: 1px;
+}
+#face6 {
+    transform:rotateY(180deg) translateZ(60px);
+}
+.cube__inner .cube__face {
+    background: #175d96;
+    border: 2px solid #fff
+}
+#inner1 {
+    transform:rotateX(0deg) translateZ(60px)
+}
+#inner2 {
+    transform:rotateX(-90deg) translateZ(60px)
+}
+#inner3 {
+    transform:rotateX(90deg) translateZ(60px)
+}
+#inner4 {
+    transform:rotateY(-90deg) translateZ(60px)
+}
+#inner5 {
+    transform:rotateY(90deg) translateZ(60px)
+}
+#inner6 {
+    transform:rotateY(180deg) translateZ(60px)
+}
+    </style>
+</head>
+<body>
+    <div class="cube__container">
+            <div class="cube__outer">
+                <div id="face1" class="cube__face"></div>
+                <div id="face2" class="cube__face"></div>
+                <div id="face3" class="cube__face"></div>
+                <div id="face4" class="cube__face"></div>
+                <div id="face5" class="cube__face"></div>
+                <div id="face6" class="cube__face"></div>
+            </div>
+            <div class="cube__inner">
+                <div id="inner1" class="cube__face"></div>
+                <div id="inner2" class="cube__face"></div>
+                <div id="inner3" class="cube__face"></div>
+                <div id="inner4" class="cube__face"></div>
+                <div id="inner5" class="cube__face"></div>
+                <div id="inner6" class="cube__face"></div>
+            </div>
+    </div>
+    <script>
+        let para = document.querySelector('.cube__outer');
+let inner = document.querySelector('.cube__inner');
+let axe=0;
+let face1 = document.querySelector('#face1');
+let face3 = document.querySelector('#face3');
+let face4 = document.querySelector('#face4');
+let face5 = document.querySelector('#face5');
+let face6 = document.querySelector('#face6');
+face1.border=0;
+face3.border=0;
+face4.border=3;
+face5.border=1;
+face6.border=2;
+
+let borders=['1px 6px 6px 1px', '1px', '1px', '1px 1px 6px 6px'];
+let topborder=['6px 6px 1px 1px', '1px 6px 6px 1px', '1px 1px 6px 6px', '6px 1px 1px 6px'];
+function rotate(){    
+    axe+=90;
+    para.style.transform=`scale3d(1, 1, 1) rotateY(${axe}deg)`;
+    inner.style.transform=`scale3d(0.5, 0.5, 0.5)rotateY(${axe*-1}deg)`;
+    for(let i=1;i<=6;i++) {
+        if(i===2)continue;
+        let face = document.querySelector(`#face${i}`);
+        let order=face.border;
+        if(order===3)face.border=0;
+        else face.border=order+1;
+        if(i===3)face.style.borderWidth=topborder[face.border];
+        else face.style.borderWidth=borders[face.border];
+    }       
+}
+setTimeout(rotate,200);
+setInterval(rotate, 5000);
+    </script>
+</body>
+</html>
