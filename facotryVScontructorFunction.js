@@ -107,3 +107,30 @@ const calculator = (() => {
   
   calculator.add(3,5); // 8
 //So, similar to a factory function. But instead of creating a factory that we can re-use to create multiple objects, the modcule pattern wraps the function in an IIFE (immediately invoked function expression)
+
+//Taken from article linked in TOP:
+// class
+class ClassCar {
+    drive () {
+      console.log('Vroom!');
+    }}  
+  const car1 = new ClassCar();
+  console.log(car1.drive());  
+  
+// constructor
+function ConstructorCar () {}
+ConstructorCar.prototype.drive = function () {
+    console.log('Vroom!');};  
+const car2 = new ConstructorCar();
+console.log(car2.drive());
+  
+// factory
+const proto3 = {
+    drive () {
+        console.log('Vroom!');}
+};
+const factoryCar = () => Object.create(proto3);
+const car3 = factoryCar();
+console.log(car3.drive());
+
+//Difference between factory & constructor: Constructors use the 'new' keyword, factories don't.

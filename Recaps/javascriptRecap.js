@@ -157,6 +157,34 @@ Mix-ins = abstract subclasses
 npm - Node package manager
 Webpack is the go-to tool for bundling and compiling javascript code.
 
+OOP Section:
+Single Responsibility principle: An object (class, module...) should only have one responsibility.
+Loosely Coupled Objects - Objects don't rely too heavily on one another
 
+SOLID:
+- Single Responsibility Principle
+- The Open/Closed Principle
+- The Liskov Substitution Principle
+- The Interface Segregation Principle
+- The Dependency Inversion Principle
+
+Object role stereotypes
+Information holder – an object designed to know certain information and provide that information to other objects.
+Structurer – an object that maintains relationships between objects and information about those relationships.
+Service provider – an object that performs specific work and offers services to others on demand.
+Controller – an object designed to make decisions and control a complex task.
+Coordinator – an object that doesn’t make many decisions but, in a rote or mechanical way, delegates work to other objects.
+Interfacer – an object that transforms information or requests between distinct parts of a system.
+
+Various OOP topics:
+- Encapsulation: Hiding data (private variables vs public ones)
+- Abstraction: A way of hiding implementation details and only showing essential features
+- Reusability / Inheritance: An object / class can inherit all the properties & methods from it's parent object.
+- Prototypal Inheritance: When we define myobject.prototype.myatt=... ==> All the instances will share a single func/att in memory.
+- Polymorphism: The ability to call the same method on different objects and have each of them respond in their own way.
+- Association: The relationship between objects (1 to 1, 1 to many, many to 1, many to many).
+- Aggregation: A special case of association. When one object takes a more major role than another. (The aggregate 'owns' the component). It's a has-a relationship.
+- Composition: A special case of aggregation. When an object contains another, and the contained object can't live without the container.
+- Composition over Inheritance: 
 
 */
