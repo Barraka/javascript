@@ -14,10 +14,31 @@
             width: 200px;
             background-color: green;
         }
+        .outer {
+            background-color: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height:100px;
+        }
+        .inner {
+            border: 1px solid blue;
+            flex-grow: 1;
+            height:100%;
+        }
+        .example svg {
+            outline: 2px solid green;
+            transform: scale(0.5);
+        }
     </style>
 </head>
 <body>    
-      
+      <div class="outer">
+        <div class="inner"></div>
+        <div class="inner"></div>
+        <div class="inner"></div>
+      </div>
+      <div class="example"></div>
     
 </body>
 </html>
