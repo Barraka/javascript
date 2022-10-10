@@ -1,2 +1,57 @@
-let container=document.querySelector('.example');
-container.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" height="80" width="80" viewBox="0 0 50 50"><path d="M22.65 34h3v-8.3H34v-3h-8.35V14h-3v8.7H14v3h8.65ZM24 44q-4.1 0-7.75-1.575-3.65-1.575-6.375-4.3-2.725-2.725-4.3-6.375Q4 28.1 4 23.95q0-4.1 1.575-7.75 1.575-3.65 4.3-6.35 2.725-2.7 6.375-4.275Q19.9 4 24.05 4q4.1 0 7.75 1.575 3.65 1.575 6.35 4.275 2.7 2.7 4.275 6.35Q44 19.85 44 24q0 4.1-1.575 7.75-1.575 3.65-4.275 6.375t-6.35 4.3Q28.15 44 24 44Zm.05-3q7.05 0 12-4.975T41 23.95q0-7.05-4.95-12T24 7q-7.05 0-12.025 4.95Q7 16.9 7 24q0 7.05 4.975 12.025Q16.95 41 24.05 41ZM24 24Z"/></svg>`
+const imagearray=['images/barberry.png','images/chilli.png','images/logo.png','images/pepper.png','images/saffron.png'];
+function imageloader() {
+    let container = document.querySelector('.container');
+    let slider = document.createElement('div');
+    slider.classList.add('slider');
+    let circleCounter = document.createElement('div');
+    circleCounter.classList.add('circleCounter');
+    for(let i=0;i<imagearray.length;i++) {
+        let picdiv = document.createElement('div');
+        picdiv.classList.add('picdiv','hide');
+        let picimg = document.createElement('img');
+        picimg.classList.add('picimg');
+        picimg.src=imagearray[i];
+        let selector = document.createElement('img');
+        selector.classList.add('selector');
+        selector.src=('images/circleempty.png');
+        selector.setAttribute('data-id',`${i}`);
+        picdiv.appendChild(picimg);
+        slider.appendChild(picdiv);
+        circleCounter.appendChild(selector);
+    }
+    container.appendChild(slider);
+    container.appendChild(circleCounter);
+}
+
+function slideshow() {
+    setInterval(animateshow,2000);
+}
+let currentCounter=0;
+let prevCounter=imagearray.length-1;
+let nextCounter=1;
+function animateshow() {
+    let currentImg = document.querySelector(`img[src="${imagearray[currentCounter]}"]`);
+    let prevImg = document.querySelector(`img[src="${imagearray[prevCounter]}"]`);
+    let nextImg = document.querySelector(`img[src="${imagearray[nextCounter]}"]`);
+    let currentDiv = currentImg.parentElement;
+    let prevDiv = prevImg.parentElement;
+    let nextDiv = nextImg.parentElement;
+
+    //Manipulate images
+    currentDiv.classList.remove('hide');
+    prevDiv.classList.add('gone');
+    nextDiv.classList.add('hide');
+    nextDiv.classList.remove('gone');
+
+    //Manipulate counterCircle
+    
+
+    if(currentCounter===imagearray.length-1) currentCounter=0;
+    else currentCounter++;
+    if(prevCounter===imagearray.length-1)prevCounter=0;
+    else prevCounter++;
+    if(nextCounter===imagearray.length-1)nextCounter=0;
+    else nextCounter++;
+}
+imageloader();
+slideshow();

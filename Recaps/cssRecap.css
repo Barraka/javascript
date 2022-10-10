@@ -123,6 +123,7 @@ Media queries:
 
 //min-content is the smallest size a box can take without overflowing its content.
 
-
+When wanting to limit the area where an iteraction occurs, e.g. a hover:
+pointer-events: none;
 
 

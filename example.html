@@ -9,36 +9,48 @@
     <style>
         body {
             background-color: gray;
+            margin:0;
         }
-        .button {
-            width: 200px;
-            background-color: green;
-        }
-        .outer {
-            background-color: red;
+        .container {
             display: flex;
             justify-content: center;
             align-items: center;
-            height:100px;
+            flex-direction: column;
         }
-        .inner {
-            border: 1px solid blue;
-            flex-grow: 1;
-            height:100%;
+        .slider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width:50%;
+            margin:100px auto;
+            position:relative;
+            outline:2px solid blue;
+            height: 300px;
+            overflow: hidden;
         }
-        .example svg {
-            outline: 2px solid green;
-            transform: scale(0.5);
+        .picdiv {
+            position:absolute;
+            top:0;
+            transition: all 0.5s ease-in-out;
+        }
+        .picimg {
+            height:250px;
+            width:250px;
+        }
+        .hide {
+            visibility: hidden;
+            transform: translateX(500px);
+            opacity:0;
+        }
+        .gone {
+            transform: translateX(-800px); 
+            visibility: hidden;
+            opacity:0;
         }
     </style>
 </head>
 <body>    
-      <div class="outer">
-        <div class="inner"></div>
-        <div class="inner"></div>
-        <div class="inner"></div>
-      </div>
-      <div class="example"></div>
+      <div class="container"></div>
     
 </body>
 </html>

@@ -185,6 +185,9 @@ Various OOP topics:
 - Association: The relationship between objects (1 to 1, 1 to many, many to 1, many to many).
 - Aggregation: A special case of association. When one object takes a more major role than another. (The aggregate 'owns' the component). It's a has-a relationship.
 - Composition: A special case of aggregation. When an object contains another, and the contained object can't live without the container.
-- Composition over Inheritance: 
+- Composition over Inheritance
+
+
+
 
 */
