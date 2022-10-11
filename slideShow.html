@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        body {
+            background-color: gray;
+            margin:0;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .slider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width:50%;
+            margin:100px auto;
+            position:relative;
+            outline:2px solid blue;
+            height: 300px;
+            overflow: hidden;
+        }
+        .picdiv {
+            position:absolute;
+            top:0;
+            transition: all 0.5s ease-in-out;
+        }
+        .picimg {
+            height:250px;
+            width:250px;
+        }
+        .hide {
+            visibility: hidden;
+            transform: translateX(500px);
+            opacity:0;
+        }
+        .gone {
+            transform: translateX(-800px); 
+            visibility: hidden;
+            opacity:0;
+        }
+        .temp {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>    
+      <div class="container"></div>
+    <script>
+        let duration=5000;
+        const imagearray=['images/barberry.png','images/chilli.png','images/logo.png','images/pepper.png','images/saffron.png'];
+function imageloader() {
+    let container = document.querySelector('.container');
+    let slider = document.createElement('div');
+    slider.classList.add('slider');
+    let circleCounter = document.createElement('div');
+    circleCounter.classList.add('circleCounter');
+    for(let i=0;i<imagearray.length;i++) {
+        let picdiv = document.createElement('div');
+        picdiv.classList.add('picdiv','hide');
+        let picimg = document.createElement('img');
+        picimg.classList.add('picimg');
+        picimg.src=imagearray[i];
+        let selector = document.createElement('img');
+        selector.classList.add('selector');
+        selector.src=('images/circleempty.png');
+        selector.setAttribute('data-id',`${i}`);
+        picdiv.appendChild(picimg);
+        slider.appendChild(picdiv);
+        circleCounter.appendChild(selector);
+        selector.addEventListener('click',jumpToPic);
+    }
+    container.appendChild(slider);
+    container.appendChild(circleCounter);
+}
+
+let currentCounter=0;
+let prevCounter=imagearray.length-1;
+let nextCounter=1;
+let currentInterval='';
+function slideshow() {
+    currentInterval = setInterval(animateshow,duration);
+}
+function animateshow() {
+    let currentImg = document.querySelector(`img[src="${imagearray[currentCounter]}"]`);
+    let prevImg = document.querySelector(`img[src="${imagearray[prevCounter]}"]`);
+    let nextImg = document.querySelector(`img[src="${imagearray[nextCounter]}"]`);
+    let currentDiv = currentImg.parentElement;
+    let prevDiv = prevImg.parentElement;
+    let nextDiv = nextImg.parentElement;
+
+    //Manipulate images
+    currentDiv.classList.remove('hide');
+    prevDiv.classList.add('gone');
+    nextDiv.classList.add('hide');
+    nextDiv.classList.remove('gone');
+
+    //Manipulate counterCircle
+    let currentDot = document.querySelector(`img[data-id="${currentCounter}"]`);
+    let prevDot = document.querySelector(`img[data-id="${prevCounter}"]`);
+    currentDot.src = src=('images/circlefill.png');
+    prevDot.src=('images/circleempty.png');
+
+    if(currentCounter===imagearray.length-1) currentCounter=0;
+    else currentCounter++;
+    if(prevCounter===imagearray.length-1)prevCounter=0;
+    else prevCounter++;
+    if(nextCounter===imagearray.length-1)nextCounter=0;
+    else nextCounter++;
+}
+function jumpToPic(e) {
+    //reset images
+    let picdiv = document.querySelectorAll('.picdiv');
+    picdiv.forEach(x=> {
+        x.classList='picdiv hide';   
+    });
+    let selector = document.querySelectorAll('.selector');
+    selector.forEach(x=> {
+        x.src=('images/circleempty.png');
+    });
+    //launch new counter    
+    let newCounter = parseInt(e.currentTarget.getAttribute('data-id'));
+    let currentDot = document.querySelector(`img[data-id="${newCounter}"]`);
+    currentDot.src = src=('images/circlefill.png');
+    clearInterval(currentInterval);
+    currentCounter=newCounter;
+    if(currentCounter===0)prevCounter=imagearray.length-1;
+    else prevCounter=currentCounter-1;
+    if(currentCounter===imagearray.length-1)nextCounter=0;
+    else nextCounter=currentCounter+1;
+    currentInterval = setInterval(animateshow,duration);
+    animateshow();    
+}
+imageloader();
+animateshow();
+slideshow();
+    </script>
+</body>
+</html>

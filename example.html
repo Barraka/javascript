@@ -8,49 +8,69 @@
     <script src="example.js" defer></script>
     <style>
         body {
-            background-color: gray;
-            margin:0;
+        font: 1em sans-serif;
+        width: 200px;
+        padding: 0;
+        margin: 0 auto;
         }
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
+
+        p * {
+        display: block;
         }
-        .slider {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width:50%;
-            margin:100px auto;
-            position:relative;
-            outline:2px solid blue;
-            height: 300px;
-            overflow: hidden;
+
+        input[type="email"] {
+        appearance: none;
+
+        width: 100%;
+        border: 1px solid #333;
+        margin: 0;
+
+        font-family: inherit;
+        font-size: 90%;
+
+        box-sizing: border-box;
         }
-        .picdiv {
-            position:absolute;
-            top:0;
-            transition: all 0.5s ease-in-out;
+
+        /* This is our style for the invalid fields */
+        input:invalid {
+        border-color: #900;
+        background-color: #fdd;
         }
-        .picimg {
-            height:250px;
-            width:250px;
+
+        input:focus:invalid {
+        outline: none;
         }
-        .hide {
-            visibility: hidden;
-            transform: translateX(500px);
-            opacity:0;
+
+        /* This is the style of our error messages */
+        .error {
+        width: 100%;
+        padding: 0;
+
+        font-size: 80%;
+        color: white;
+        background-color: #900;
+        border-radius: 0 0 5px 5px;
+
+        box-sizing: border-box;
         }
-        .gone {
-            transform: translateX(-800px); 
-            visibility: hidden;
-            opacity:0;
+
+        .error.active {
+        padding: 0.3em;
         }
+
     </style>
 </head>
 <body>    
-      <div class="container"></div>
-    
+    <form novalidate>
+        <p>
+          <label for="mail">
+            <span>Please enter an email address:</span>
+            <input type="email" id="mail" name="mail" required minlength="8" />
+            <span class="error" aria-live="polite"></span>
+          </label>
+        </p>
+        <button>Submit</button>
+      </form>     
+      
 </body>
 </html>

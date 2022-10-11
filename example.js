@@ -1,57 +1,49 @@
-const imagearray=['images/barberry.png','images/chilli.png','images/logo.png','images/pepper.png','images/saffron.png'];
-function imageloader() {
-    let container = document.querySelector('.container');
-    let slider = document.createElement('div');
-    slider.classList.add('slider');
-    let circleCounter = document.createElement('div');
-    circleCounter.classList.add('circleCounter');
-    for(let i=0;i<imagearray.length;i++) {
-        let picdiv = document.createElement('div');
-        picdiv.classList.add('picdiv','hide');
-        let picimg = document.createElement('img');
-        picimg.classList.add('picimg');
-        picimg.src=imagearray[i];
-        let selector = document.createElement('img');
-        selector.classList.add('selector');
-        selector.src=('images/circleempty.png');
-        selector.setAttribute('data-id',`${i}`);
-        picdiv.appendChild(picimg);
-        slider.appendChild(picdiv);
-        circleCounter.appendChild(selector);
-    }
-    container.appendChild(slider);
-    container.appendChild(circleCounter);
+// There are many ways to pick a DOM node; here we get the form itself and the email
+// input box, as well as the span element into which we will place the error message.
+const form = document.querySelector("form");
+const email = document.getElementById("mail");
+const emailError = document.querySelector("#mail + span.error");
+
+email.addEventListener("input", (event) => {
+  // Each time the user types something, we check if the
+  // form fields are valid.
+
+  if (email.validity.valid) {
+    // In case there is an error message visible, if the field
+    // is valid, we remove the error message.
+    emailError.textContent = ""; // Reset the content of the message
+    emailError.className = "error"; // Reset the visual state of the message
+  } else {
+    // If there is still an error, show the correct error
+    showError();
+  }
+});
+
+form.addEventListener("submit", (event) => {
+  // if the email field is valid, we let the form submit
+  if (!email.validity.valid) {
+    // If it isn't, we display an appropriate error message
+    showError();
+    // Then we prevent the form from being sent by canceling the event
+    event.preventDefault();
+  }
+});
+
+function showError() {
+  if (email.validity.valueMissing) {
+    // If the field is empty,
+    // display the following error message.
+    emailError.textContent = "You need to enter an e-mail address.";
+  } else if (email.validity.typeMismatch) {
+    // If the field doesn't contain an email address,
+    // display the following error message.
+    emailError.textContent = "Entered value needs to be an e-mail address.";
+  } else if (email.validity.tooShort) {
+    // If the data is too short,
+    // display the following error message.
+    emailError.textContent = `Email should be at least ${email.minLength} characters; you entered ${email.value.length}.`;
+  }
+
+  // Set the styling appropriately
+  emailError.className = "error active";
 }
-
-function slideshow() {
-    setInterval(animateshow,2000);
-}
-let currentCounter=0;
-let prevCounter=imagearray.length-1;
-let nextCounter=1;
-function animateshow() {
-    let currentImg = document.querySelector(`img[src="${imagearray[currentCounter]}"]`);
-    let prevImg = document.querySelector(`img[src="${imagearray[prevCounter]}"]`);
-    let nextImg = document.querySelector(`img[src="${imagearray[nextCounter]}"]`);
-    let currentDiv = currentImg.parentElement;
-    let prevDiv = prevImg.parentElement;
-    let nextDiv = nextImg.parentElement;
-
-    //Manipulate images
-    currentDiv.classList.remove('hide');
-    prevDiv.classList.add('gone');
-    nextDiv.classList.add('hide');
-    nextDiv.classList.remove('gone');
-
-    //Manipulate counterCircle
-    
-
-    if(currentCounter===imagearray.length-1) currentCounter=0;
-    else currentCounter++;
-    if(prevCounter===imagearray.length-1)prevCounter=0;
-    else prevCounter++;
-    if(nextCounter===imagearray.length-1)nextCounter=0;
-    else nextCounter++;
-}
-imageloader();
-slideshow();
