@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+        font: 1em sans-serif;
+        /* width: 200px; */
+        padding: 0;
+        margin: 0 auto;
+        background-color: rgb(64,64,64);
+        }
+        * {
+            box-sizing: border-box;
+        }
+        form {
+        max-width: 200px;
+        margin: 0 auto;
+        color:snow;
+        }        
+
+        p * {
+        display: block;
+        }
+
+        input.mail {
+        appearance: none;
+        min-width: 100%;
+        border: 1px solid #333;
+        margin: 0;
+        padding:0;
+        font-family: inherit;
+        /* font-size: 90%; */
+        box-sizing: border-box;
+        }
+        #mail {
+            border:0;
+            min-width: 100%;
+            max-width: 100%;
+            padding:4px;
+            font-size: 105%;
+        }
+        input.invalid {
+        border-color: #900;
+        background-color: #fdd;        
+        }
+        input:focus.invalid {
+        outline: none;
+        }
+        .error {
+        width: 100%;
+        padding: 0;
+        font-size: 80%;
+        color: white;
+        background-color: #900;
+        border-radius: 0 0 5px 5px;
+        box-sizing: border-box;
+        }
+        .error.active {
+        padding: 0.3em;
+        }
+
+    </style>
+</head>
+<body>    
+    <form>
+        Form not using the constraint validation API:
+        <p>
+          <label for="mail">
+            <span>Please enter an email address:</span>
+            <input type="email" id="mail" name="mail" required minlength="8" />
+            <span class="error" aria-live="polite"></span>
+          </label>
+          <button id="sub">Submit</button>
+        </p>
+        
+      </form>     
+      
+      <script>
+const form = document.querySelector("form");
+const email = document.getElementById("mail");
+const error = email.nextElementSibling;
+let sub = document.querySelector('#sub');
+
+const emailRegExp =
+  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+window.addEventListener("load", () => {
+  const isValid = email.value.length === 0 || emailRegExp.test(email.value);
+  email.className = isValid ? "valid" : "invalid";
+});
+
+email.addEventListener("blur", () => {
+  const isValid = email.value.length === 0 || emailRegExp.test(email.value);
+  if (isValid) {
+    email.className = "valid";
+    error.textContent = "";
+    error.className = "error";
+  } else {
+    email.className = "invalid";
+    error.textContent="ERROR!!"
+  }
+});
+
+email.addEventListener("input", () => {
+    if(email.classList.contains('invalid')) {
+        const isValid = email.value.length === 0 || emailRegExp.test(email.value);
+        if (isValid) {
+            email.className = "valid";
+            error.textContent = "";
+            error.className = "error";
+        }
+    }
+});
+
+sub.addEventListener("click", (event) => {
+  event.preventDefault();
+  const isValid = email.value.length === 0 || emailRegExp.test(email.value);
+  if (!isValid) {
+    email.className = "invalid";
+    error.textContent = "I expect an e-mail, darling!";
+    error.className = "error active";
+  } else {
+    email.className = "valid";
+    error.textContent = "";
+    error.className = "error";
+  }
+});
+
+      </script>
+</body>
+</html>

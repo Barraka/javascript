@@ -1,49 +1,56 @@
-// There are many ways to pick a DOM node; here we get the form itself and the email
-// input box, as well as the span element into which we will place the error message.
-const form = document.querySelector("form");
-const email = document.getElementById("mail");
-const emailError = document.querySelector("#mail + span.error");
+let mail = document.querySelector('#mail');
+let country = document.querySelector('#country');
+let zip = document.querySelector('#zip');
+let password1 = document.querySelector('#password1');
+let password2 = document.querySelector('#password2');
 
-email.addEventListener("input", (event) => {
-  // Each time the user types something, we check if the
-  // form fields are valid.
+let mailerror = document.querySelector('.mailerror');
+let countryerror = document.querySelector('.countryerror');
+let ziperror = document.querySelector('.ziperror');
+let password1error = document.querySelector('.password1error');
+let password2error = document.querySelector('.password2error');
 
-  if (email.validity.valid) {
-    // In case there is an error message visible, if the field
-    // is valid, we remove the error message.
-    emailError.textContent = ""; // Reset the content of the message
-    emailError.className = "error"; // Reset the visual state of the message
-  } else {
-    // If there is still an error, show the correct error
-    showError();
-  }
+let eventFlag=false;
+let allInputs = document.querySelectorAll('input');
+allInputs.forEach(x=>{
+    x.addEventListener('focus',onFocus);
+    x.addEventListener('input',onType);
 });
 
-form.addEventListener("submit", (event) => {
-  // if the email field is valid, we let the form submit
-  if (!email.validity.valid) {
-    // If it isn't, we display an appropriate error message
-    showError();
-    // Then we prevent the form from being sent by canceling the event
-    event.preventDefault();
-  }
-});
-
-function showError() {
-  if (email.validity.valueMissing) {
-    // If the field is empty,
-    // display the following error message.
-    emailError.textContent = "You need to enter an e-mail address.";
-  } else if (email.validity.typeMismatch) {
-    // If the field doesn't contain an email address,
-    // display the following error message.
-    emailError.textContent = "Entered value needs to be an e-mail address.";
-  } else if (email.validity.tooShort) {
-    // If the data is too short,
-    // display the following error message.
-    emailError.textContent = `Email should be at least ${email.minLength} characters; you entered ${email.value.length}.`;
-  }
-
-  // Set the styling appropriately
-  emailError.className = "error active";
+function onFocus(e) {
+    if(eventFlag) {e.currentTarget.removeEventListener('blur', outfocus);eventFlag=false;}
+    else {e.currentTarget.addEventListener('blur',outfocus);eventFlag=true;}
+}
+function outfocus(e) {
+    e.currentTarget.removeEventListener('blur', outfocus);    
+    e.currentTarget.setCustomValidity('');
+    if(!e.currentTarget.checkValidity()) {
+        e.currentTarget.classList.add("invalid");
+        if(e.currentTarget.value==='')e.currentTarget.nextElementSibling.textContent="Please fill out this field.";
+        else if(e.currentTarget.id==='mail')e.currentTarget.nextElementSibling.textContent="Please enter a correct email.";
+        else if(e.currentTarget.id==='country') {
+            if(e.currentTarget.value.length<3)e.currentTarget.nextElementSibling.textContent="Field must be at least 3 characters long.";
+            else e.currentTarget.nextElementSibling.textContent="Only letters are allowed."; //if(e.currentTarget.validity.patternMismatch)
+            
+        }
+        else if(e.currentTarget.id==='zip')e.currentTarget.nextElementSibling.textContent="Only digits allowed, at least 5.";
+        else if(e.currentTarget.id==='password1')e.currentTarget.nextElementSibling.textContent="Password must be at least 5 characters long.";
+        // else if(e.currentTarget.id==='password2')e.currentTarget.nextElementSibling.textContent="Password must be at least 5 characters long.";
+        e.currentTarget.reportValidity();
+    } else {
+        e.target.classList.remove("invalid");
+        e.target.classList.add("valid"); 
+        eventFlag=false;
+        e.currentTarget.nextElementSibling.textContent='';
+    }
+}
+function onType(e) {
+    e.target.setCustomValidity('');
+    if(e.target.classList.contains("invalid")) {
+        if(e.target.checkValidity()) {
+            e.target.classList.remove("invalid"); 
+            e.target.classList.add("valid");    
+            e.currentTarget.nextElementSibling.textContent='';
+        }
+    }    
 }
