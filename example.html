@@ -33,10 +33,13 @@
             text-align: center;
             font-size: 1em;
         }
+        .outerdiv input:focus {
+            outline:none;
+        }
         .invalid {
             border:2px solid red;
         }
-        .outerdiv input:valid {
+        .valid {
             border:2px solid green;
         }
         .myform {
@@ -66,14 +69,22 @@
             font-size: 1.5em;
             padding:5px 15px;
             border-radius: 5px;
-            border:2px solid transparent;            
+            border:2px solid transparent;
+            transition: all 1s ease;       
+        }
+        #password2.invalid {
+            border:2px solid red;
+        }
+        .validButton {
+            background-color: rgb(137, 160, 137);
+            outline:3px solid green;
         }
 
     </style>
 </head>
 <body>    
     <div class="container">
-        <form  class="myform">
+        <form  class="myform" novalidate>
             <div class="maildiv outerdiv">
                 <label for="mail" class="maillabel">Email:</label>
                 <input type="email" name="mail" id="mail" required>
@@ -96,7 +107,7 @@
             </div>
             <div class="passworddiv2 outerdiv">
                 <label for="password2" class="passwordlabel">Confirmation:</label>
-                <input type="password" name="password2" id="password2" required minlength="5">
+                <input type="password" name="password2" id="password2" required>
                 <div class="errormsg password2error"></div>
             </div>
             <button class='submit'>Submit</button>
