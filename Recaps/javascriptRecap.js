@@ -188,6 +188,6 @@ Various OOP topics:
 - Composition over Inheritance
 
 
-
+A closure is any function that keeps reference to variables from its parent's scope, even after the parent has returned.
 
 */
