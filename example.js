@@ -1,16 +1,25 @@
-var req1 = new Promise(function(resolve, reject) { 
-	// A mock async action using setTimeout
-	setTimeout(function() { resolve('First!'); }, 8000);
+let myimg = document.querySelector('.mypic');
+let output;
+let fetch = require('node-fetch');
+fetch('https://www.bbc.com', {
+    mode:'cors',
+    method:'GET',
+    cache: 'no-cache',
+    credentials: 'same-origin',
+    referrerPolicy: 'no-referrer',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    
+})
+.then(x=>{
+    console.log(x);
+    return x.json();
+})
+.then(x=>{
+    output=x;
+    console.log(x);
+})
+.catch(e=>{
+    console.log(e)
 });
-var req2 = new Promise(function(resolve, reject) { 
-	// A mock async action using setTimeout
-	setTimeout(function() { resolve('Second!'); }, 3000);
-});
-Promise.race([req1, req2]).then(function(one) {
-	console.log('Then: ', one);
-}).catch(function(one, two) {
-	console.log('Catch: ', one);
-});
-
-// From the console:
-// Then: Second!

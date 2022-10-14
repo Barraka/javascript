@@ -5,8 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="example.js" type='module' defer></script>
-    <!-- <script data-main="scripts/app" src="scripts/require.js"></script> -->
+    <script src="example.js" defer></script>
     <link rel="stylesheet" href="example.css">
     <style>
         
@@ -17,6 +16,21 @@
     
     <img src="#" alt="" class="mypic">
     <script>
+let myimg = document.querySelector('.mypic');
+let output;
+fetch('https://api.giphy.com/v1/gifs/translate?api_key=T9HQwGcOBkgyhsn7jmPZxakR9xEBgngw&s=cats', {
+    mode:'cors'   
+})
+.then(x=>{
+    return x.json();
+})
+.then(x=>{
+    output=x;
+    myimg.src=x.data.images.original.url;
+})
+.catch(e=>{
+    console.log(e)
+});
     </script>
 </body>
 </html>
