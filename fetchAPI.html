@@ -5,8 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="example.js" defer></script>
-    <link rel="stylesheet" href="example.css">
     <style>
         
 
@@ -31,6 +29,19 @@ fetch('https://api.giphy.com/v1/gifs/translate?api_key=T9HQwGcOBkgyhsn7jmPZxakR9
 .catch(e=>{
     console.log(e)
 });
+
+/*
+Same, but this async / await instead, makes it a bit more readable:
+
+async function gofind() {
+    let item=search.value;
+    const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=T9HQwGcOBkgyhsn7jmPZxakR9xEBgngw&s=${item}`, {
+        mode:'cors'   
+    });
+    const searchdata = await response.json();
+    myimg.src = searchdata.data.images.original.url;
+}
+*/
     </script>
 </body>
 </html>
